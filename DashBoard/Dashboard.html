@@ -14,14 +14,10 @@
 <div class="header">
 
     <div class="username_label_holder">
-        <span id="username_label">
-            Tamer Nassar
-        </span>
+        <span id="username_label">Tamer Nassar</span>
     </div>
     <div class="flatname_label_holder">
-        <span>
-            TGR
-        </span>
+        <span>TGR</span>
     </div>
 
 </div>
@@ -33,11 +29,20 @@
     </div>
 
     <div class="inner_container">
-        <!-- Holds latest events -->
-        <div class="report_card events_container"></div>
 
         <!-- Holds machines overview -->
-        <div class="report_card overview_container"></div>
+        <div id="overview_container" class="report_card overview_container">
+            <div class='colors_legend'>
+                <div class='legend-scale'>
+                    <ul class='legend-labels'>
+                        <li><span style='background:#77C66E;'>Up</span></li>
+                        <li><span style='background:#A52A2A;'>Down</span></li>
+                        <li><span style='background:#ffa500;'>PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <center id="machine_leading"><img src="../images/loading.gif"/></center>
+        </div>
     </div>
 </div>
 

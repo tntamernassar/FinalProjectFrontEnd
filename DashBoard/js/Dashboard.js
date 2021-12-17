@@ -1,9 +1,10 @@
 
-
 let Dashboard = {
 
     display_machines: (machines)=>{
-        console.log("machines :" + machines.length);
+        machines.map((machine)=>{
+            console.log(machine);
+        });
     },
 
     init: ()=>{

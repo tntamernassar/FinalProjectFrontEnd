@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+
+    <link rel="stylesheet" type="text/css" href="style/login.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
+
+    <script src="../User/UserManager.js"></script>
+    <script src="js/login.js"></script>
+</head>
+<script src="../Network/NetworkAdapter.js"></script>
+<body>
+
+
+<div class="report_card login_card">
+    <H1>Enter your Email:</H1>
+    <div id="login_form" class="login_form">
+        <input type="text" placeholder="john.johny@intel.com" id="input">
+        <a href="#" id="next" class="next round" onclick="Login.request_log_in()">&#8250;</a>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    if (UserManager.logged_in()){
+        window.location = "../DashBoard/Dashboard.html"
+    }else {
+        Login.init();
+    }
+</script>
+
+</body>
+</html>

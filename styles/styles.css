@@ -1,0 +1,9 @@
+
+.report_card{
+    background-color: #fff;
+    color: rgba(13,27,62,0.7);
+    border: 1px solid rgba(26,54,126,0.125);
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4,9,20,0.03), 0 0.9375rem 1.40625rem rgba(4,9,20,0.03), 0 0.25rem 0.53125rem rgba(4,9,20,0.05), 0 0.125rem 0.1875rem rgba(4,9,20,0.03);
+    border-radius: .25rem;
+    cursor: pointer;
+}

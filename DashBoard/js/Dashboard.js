@@ -5,7 +5,6 @@ let Dashboard = {
         let container = document.getElementById("overview_container");
         let machine_leading = document.getElementById("machine_leading");
         container.removeChild(machine_leading);
-
         machines.map((machine)=>{
             let name = machine["name"];
             let state = machine["state"];

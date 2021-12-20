@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ea3d08b-7af0-4f62-a1f4-1ac2dc85f0f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Login/Login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/js/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Login/style/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/styles.css" afterDir="false" />
+    <list default="true" id="3ea3d08b-7af0-4f62-a1f4-1ac2dc85f0f6" name="Default Changelist" comment="Login functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DashBoard/Dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/Dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DashBoard/js/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/js/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DashBoard/style/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/style/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/UserManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/User/UserManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/Login/js/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +55,8 @@
       <updated>1639511724672</updated>
       <workItem from="1639511725724" duration="3480000" />
       <workItem from="1639758181793" duration="14952000" />
-      <workItem from="1639843533127" duration="7921000" />
+      <workItem from="1639843533127" duration="8103000" />
+      <workItem from="1640013480419" duration="77000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1639513305526</created>
@@ -114,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639774473380</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Login functionality">
+      <created>1639940495465</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1639940495466</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,22 +125,23 @@
     <MESSAGE value="Dashboard styling" />
     <MESSAGE value="Construction connection pipe" />
     <MESSAGE value="Menu design" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu design" />
+    <MESSAGE value="Login functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login functionality" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="543" y="0" key="CommitChangelistDialog2" timestamp="1639774472097">
+    <state x="543" y="0" key="CommitChangelistDialog2" timestamp="1640013510736">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1639774472097" />
+    <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1640013510736" />
     <state x="-1655" y="97" key="CommitChangelistDialog2/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513304265" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1639759348217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1639759348217" />
-    <state x="523" y="200" key="Vcs.Push.Dialog.v2" timestamp="1639774476044">
+    <state x="523" y="200" key="Vcs.Push.Dialog.v2" timestamp="1640013504576">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1639774476044" />
+    <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1640013504576" />
     <state x="-1688" y="253" key="Vcs.Push.Dialog.v2/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513593187" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1639770476403">
       <screen x="0" y="0" width="1536" height="824" />

@@ -18,7 +18,7 @@ let Login = {
             NetworkAdapter.send({action: "request_login", email: email}, (response)=>{
                 if (response["success"]){
                     input.value = "";
-                    input.placeholder = "Confirmation code";
+                    input.placeholder = "Confirmation";
                     input.style.width = "200px";
                     next_button.onclick = ()=>{
                         let confirmation = input.value;

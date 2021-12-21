@@ -118,3 +118,39 @@ body, html {
 .state_DOWN {background-color: #A52A2A	;}
 .state_UP {background-color: #77C66E;}
 .state_PM {background-color: #ffa500;}
+
+
+.column_name{
+    font-weight: 750;
+    font-size: 35px;
+    color: black;
+}
+
+.machine_name_value{
+    font-size: 25px;
+    color: black;
+}
+
+.machine_state{
+    font-weight: 750;
+    font-size: 35px;
+    color: black;
+}
+
+.machine_state_value{
+    font-size: 25px;
+    color: black;
+}
+
+
+.att_name{
+    font-weight: 600;
+
+    font-size: 35px;
+    color: black;
+}
+
+.att_value{
+    font-size: 25px;
+    color: black;
+}

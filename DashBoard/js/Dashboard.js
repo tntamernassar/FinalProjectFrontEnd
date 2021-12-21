@@ -5,7 +5,7 @@ let Dashboard = {
         let container = document.getElementById("overview_container");
         let machine_leading = document.getElementById("machine_leading");
         container.removeChild(machine_leading);
-        machines.map((machine)=>{
+        machines.forEach((machine)=>{
             let name = machine["name"];
             let state = machine["state"];
 
@@ -21,8 +21,9 @@ let Dashboard = {
             console.log("connected");
             NetworkAdapter.send({
                 "action": "get_machines",
-                "flat": "TGR"
+                "department": "TGR"
             }, (response)=>{
+                console.log(response);
                 Dashboard.display_machines(response["machines"]);
             });
         };

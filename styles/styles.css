@@ -7,3 +7,24 @@
     border-radius: .25rem;
     cursor: pointer;
 }
+
+
+.menu_header{
+    font-size: 20px;
+    margin-left: 4%;
+    margin-top: 2%;
+    color: white;
+    padding: 2%;
+    cursor: pointer;
+}
+.meu_option{
+    font-size: 20px;
+    margin-left: 8%;
+    margin-top: 2%;
+    color: white;
+    padding: 2%;
+    cursor: pointer;
+}
+.meu_option:hover{
+    font-style: italic;
+}

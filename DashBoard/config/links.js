@@ -1,0 +1,1 @@
+let ControlPanellink='../ControlPanel/ControPanel.html';

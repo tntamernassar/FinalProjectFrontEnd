@@ -10,12 +10,15 @@ let UserManager = {
     login: (user)=>{
         let uid = user["uid"];
         localStorage.setItem("UID", uid);
-        localStorage.setItem("user", user);
+        localStorage.setItem("user", JSON.stringify(user));
     },
 
     logout: ()=>{
         localStorage.removeItem("UID");
         localStorage.removeItem("user");
+    },
+    getuser:()=>{
+        return JSON.parse(localStorage.getItem("user"));
     }
 
 }

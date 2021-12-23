@@ -63,6 +63,8 @@ let Dashboard = {
 
     },
 
+
+
     display_machines: (machines)=>{
         let container = document.getElementById("overview_container");
         let machine_leading = document.getElementById("machine_leading");
@@ -89,6 +91,7 @@ let Dashboard = {
     },
 
     init: ()=>{
+
         const onConnection = ()=>{
             console.log("connected");
             NetworkAdapter.send({
@@ -105,6 +108,11 @@ let Dashboard = {
         };
 
         NetworkAdapter.init(onConnection, onError);
+    },
+    const: NewTab= (link)=> {
+        console.log('hello');
+        window.location=link;
     }
+
 
 }

@@ -1,46 +1,7 @@
 
 let Dashboard = {
 
-    display_attributes:(machine)=>{
-        // alert("I am an alert box!");
-        // window.open('https://javascript.info');
-        let left = (screen.width - 300) / 2;
-        let top = (screen.height - 300) / 4;
-        let newWin = window.open("about:blank", "hello", "resizable=yes,width=600,height=600,"+"top="+top+",left="+left);
-        newWin.document.writeln("<body bgcolor='#335AFF'>");
-        newWin.document.write('<span style="font-size:30px">'+"machine name: "+machine["name"]);
-        newWin.document.write("<br><br>");
-        newWin.document.write("machine state: "+machine["state"]);
-        newWin.document.write("<br><br>");
-        newWin.document.write("machine attributes:");
-        newWin.document.write("<br><br>");
-        for (const [key, value] of Object.entries(machine["attributes"])) {
-            newWin.document.write(key,":",value);
-            newWin.document.write("<br>");
-        }
-        newWin.document.write("<span>");
-        newWin.document.writeln("<\/body>");
-        // machine["attributes"].forEach((att)=>{
-        //     newWin.document.write(att);
-        // })
-
-    },
-
-    display_pop_up:(body)=>{
-        let popup_body = document.getElementById("popup_body");
-        popup_body.innerHTML = '';
-        popup_body.appendChild(body);
-        let modal = document.getElementById("myModal");
-        modal.style.display = "block";
-        let span = document.getElementsByClassName("close")[0];
-        span.onclick=()=>{
-            modal.style.display = "none";
-        };
-
-
-    },
-
-    display_att:(machine)=>{
+    display_attributes_popup:(machine)=>{
         let body = document.createElement("div");
         let div=document.createElement("div");
         div.innerHTML=" <span class='column_name'> machine name:</span> " +
@@ -59,8 +20,7 @@ let Dashboard = {
             body.appendChild(div_att)
         }
 
-        Dashboard.display_pop_up(body)
-
+        Utils.display_pop_up(body)
     },
 
 
@@ -78,15 +38,9 @@ let Dashboard = {
 
             machine_container.className = "report_card machine_container state_"+state;
             machine_container.onclick=()=>{
-                Dashboard.display_att(machine)
+                Dashboard.display_attributes_popup(machine);
             };
             container.appendChild(machine_container);
-            modal = document.getElementById("myModal");
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
         });
     },
 

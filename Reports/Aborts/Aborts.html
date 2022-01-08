@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aborts</title>
+
+    <script src="../../Network/NetworkAdapter.js"></script>
+    <script src="../../Utils/Utils.js"></script>
+    <script src="js/Aborts.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style/aborts.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/tabs.css"/>
+</head>
+<body>
+
+
+<div class="tab">
+    <button class="tablinks" onclick="Utils.openTab(event, 'Aborts')">Aborts</button>
+    <button class="tablinks" onclick="Utils.openTab(event, 'Tracers')">Tracers</button>
+    <button class="tablinks" onclick="Utils.openTab(event, 'Alerts')">Alerts</button>
+</div>
+
+<div id="Aborts" class="tabcontent">
+Aborts
+</div>
+
+<div id="Tracers" class="tabcontent">
+Tracers
+</div>
+
+<div id="Alerts" class="tabcontent">
+Alerts
+</div>
+
+<script>
+    Aborts.init();
+</script>
+</body>
+</html>

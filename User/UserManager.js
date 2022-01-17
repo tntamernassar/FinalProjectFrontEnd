@@ -13,9 +13,10 @@ let UserManager = {
         localStorage.setItem("user", JSON.stringify(user));
     },
 
-    logout: ()=>{
+    logout: (cont)=>{
         localStorage.removeItem("UID");
         localStorage.removeItem("user");
+        cont();
     },
     getuser:()=>{
         return JSON.parse(localStorage.getItem("user"));

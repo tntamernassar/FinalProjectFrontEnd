@@ -9,6 +9,7 @@
 
     <script src="js/ControlPanel.js"></script>
     <script src="../User/UserManager.js"></script>
+    <script src="../Utils/Utils.js"></script>
 
 </head>
 <body>
@@ -19,7 +20,6 @@
         </div>
         <div class="navbar__left">
             <a class="Title" href="#"> Control Panel</a>
-            \
         </div>
         <div class="navbar__right">
             <img class= "intel-logo" src="../images/Intel-logo.jpg" alt="Intel" width ="99" height ="39">
@@ -130,7 +130,7 @@
 
         <div class="sidebar__logout">
             <i class="fa fa-power-off"></i>
-            <a href="#">Log out</a>
+            <a href="#" onclick="UserManager.logout(()=>Utils.redirect('../Login/Login.html'))">Log out</a>
         </div>
     </div>
 </div>

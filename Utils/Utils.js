@@ -2,12 +2,46 @@
 const Utils = {
 
     /**
+     * build tab view from a given list of tabs, each tab is :
+     *
+     * tab = {
+     *     "name" - name of the tab
+     *     "cont" - cont function wafter clicking the tab
+     *     "content_classname" - classname of the content
+     * }
+     * **/
+    build_tabs: (parent, tabs, parent_of_content)=>{
+        let div = document.createElement("div");
+        div.className = "tab";
+        parent.appendChild(div);
+
+        tabs.forEach((tab)=>{
+            let name = tab["name"];
+            let cont = tab["cont"];
+            let content_classname = tab["content_classname"];
+
+            let content_div = document.createElement("div");
+            content_div.className = content_classname;
+            content_div.id = name;
+            parent_of_content.appendChild(content_div);
+
+            let button = document.createElement("button");
+            button.innerHTML = name;
+            button.className = "tablinks";
+            button.onclick = (event)=>{
+                Utils.openTab(event, name, parent_of_content, cont);
+            };
+            div.appendChild(button);
+        });
+    },
+
+    /**
      * pre conditions:
      * DOM must contain div with id of {@param tab_name}
      * **/
-    openTab: (evt, tab_name)=>{
+    openTab: (evt, tab_name, tab_class_name, cont)=>{
         let i, tab_content, tab_links;
-        tab_content = document.getElementsByClassName("tabcontent");
+        tab_content = document.getElementsByClassName(tab_class_name);
         for (i = 0; i < tab_content.length; i++) {
             tab_content[i].style.display = "none";
         }
@@ -17,6 +51,17 @@ const Utils = {
         }
         document.getElementById(tab_name).style.display = "block";
         evt.currentTarget.className += " active";
+        if (cont) {
+            cont();
+        }
+    },
+
+
+    /**
+     * Redirect to the given URL
+     * **/
+    redirect: (url)=>{
+        location.href = url;
     },
 
 
@@ -47,4 +92,28 @@ const Utils = {
             }
         }
     },
+
+
+    /**
+     * calculate difference in minutes between two string dates
+     * **/
+    str_date_diff:(old_date, new_date)=>{
+        let _new = new Date(new_date);
+        let _old = new Date(old_date);
+        let diffMs = (_new - _old);
+        let diffDays = Math.floor(diffMs / 86400000); // days
+        let diffHrs = Math.floor((diffMs % 86400000) / 3600000); // hours
+        let diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
+
+        return diffMins + 60*diffHrs + 24*60*diffDays
+    },
+
+
+    /**
+     * return set of an array
+     * **/
+    distinct: (elements)=>{
+        return elements.filter((e, i)=>elements.indexOf(e) == i);
+    },
+
 }

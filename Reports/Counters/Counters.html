@@ -2,43 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Aborts</title>
+    <title>Counters</title>
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
     <script src="../../Network/NetworkAdapter.js"></script>
     <script src="../../Utils/Utils.js"></script>
     <script src="../../Utils/TableBuilder.js"></script>
     <script src="../../Utils/ChartBuilder.js"></script>
+
     <link rel="stylesheet" type="text/css" href="../../styles/styles.css"/>
     <link rel="stylesheet" type="text/css" href="../../styles/tabs.css"/>
     <link rel="stylesheet" type="text/css" href="../../styles/simple_table.css"/>
 
-    <link rel="stylesheet" type="text/css" href="style/aborts.css"/>
-    <script src="js/Aborts.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/counters.css">
+    <script src="js/Counters.js"></script>
+
 </head>
 <body>
 
 
-<div class="tab">
-    <button class="tablinks" onclick="Utils.openTab(event, 'E3', 'tabcontent', E3.draw)">E3</button>
-    <button class="tablinks" onclick="Utils.openTab(event, 'Tracers', 'tabcontent', Tracers.draw)">Tracers</button>
-    <button class="tablinks" onclick="Utils.openTab(event, 'Alerts', 'tabcontent')">Alerts</button>
-</div>
+<div id="container">
 
-<div id="E3" class="tabcontent">
-
-</div>
-
-<div id="Tracers" class="tabcontent">
-
-</div>
-
-<div id="Alerts" class="tabcontent">
-    Alerts
 </div>
 
 <script>
-    Aborts.init();
+    Counters.init();
 </script>
+
 </body>
 </html>

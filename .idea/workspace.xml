@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ea3d08b-7af0-4f62-a1f4-1ac2dc85f0f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Reports/Aborts/Aborts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/Aborts/js/Aborts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/Aborts/style/aborts.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/Utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/Counters/Counters.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/Counters/js/Counters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/Counters/style/counters.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Utils/ChartBuilder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Utils/TableBuilder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/simple_table.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Counters/Counters.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Counters/js/Counters.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DashBoard/Dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/Dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DashBoard/js/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/js/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ControlPanel/ControPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/ControPanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/Aborts/Aborts.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Aborts/Aborts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/Aborts/js/Aborts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Aborts/js/Aborts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/Aborts/style/aborts.css" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Aborts/style/aborts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/UserManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/User/UserManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/Utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -44,13 +48,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/styles" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="liveEdit" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\styles" />
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\images" />
     </key>
   </component>
@@ -69,7 +75,9 @@
       <workItem from="1640114902614" duration="3106000" />
       <workItem from="1640248203755" duration="1951000" />
       <workItem from="1641577731783" duration="178000" />
-      <workItem from="1641577926742" duration="7001000" />
+      <workItem from="1641577926742" duration="7555000" />
+      <workItem from="1641737482159" duration="3285000" />
+      <workItem from="1641838378002" duration="23585000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1639513305526</created>
@@ -141,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640116321866</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added Aborts and Utils">
+      <created>1641668162869</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1641668162869</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,29 +168,32 @@
     <MESSAGE value="Construction connection pipe" />
     <MESSAGE value="Menu design" />
     <MESSAGE value="Login functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login functionality" />
+    <MESSAGE value="Added Aborts and Utils" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Aborts and Utils" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1640121559163">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640121559163" />
-    <state x="-1241" y="0" key="CommitChangelistDialog2" timestamp="1640116320057">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="543" y="0" key="CommitChangelistDialog2" timestamp="1641668161388">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1241" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640116320057" />
     <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1640013564771" />
     <state x="-1655" y="97" key="CommitChangelistDialog2/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513304265" />
+    <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1641668161388" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1639759348217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1639759348217" />
-    <state x="-1266" y="252" key="Vcs.Push.Dialog.v2" timestamp="1640116326006">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="523" y="200" key="Vcs.Push.Dialog.v2" timestamp="1641668229242">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1266" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640116326006" />
     <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1640013571261" />
     <state x="-1688" y="253" key="Vcs.Push.Dialog.v2/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513593187" />
+    <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1641668229242" />
     <state x="-1187" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1640127510567">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -185,5 +203,9 @@
       <screen x="-2560" y="0" width="2560" height="1040" />
     </state>
     <state x="-1479" y="426" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513333205" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1642430906350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1642430906350" />
   </component>
 </project>

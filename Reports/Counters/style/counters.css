@@ -1,0 +1,11 @@
+
+.container{
+    overflow: auto;
+}
+
+.counter_div{
+    width: 45%;
+    float: left;
+    margin-left: 2%;
+    margin-top: 1%;
+}

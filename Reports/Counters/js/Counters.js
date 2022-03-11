@@ -17,7 +17,6 @@ let Counters = {
                 return '#D18C1B';
             }else {
                 return '#1BA5D1';
-
             }
         }
 
@@ -26,7 +25,9 @@ let Counters = {
             "Minutes",
             "UTP Time",
             ceid_data.map((row)=>
-                bar_chart_builder.make_bar(row["ENTITY"], Utils.str_date_diff(row["TXN_DATE"], new Date()), color(row))
+                bar_chart_builder.make_bar(row["ENTITY"],
+                    Number((Utils.str_date_diff(row["TXN_DATE"], new Date()) / 60).toFixed(2)),
+                    color(row))
             )
         );
 

@@ -1,0 +1,28 @@
+
+.menu {
+    width: 15%;
+    height: 100%;
+    overflow: auto;
+    float: left;
+    background-color: #121212;
+}
+
+.menu_header{
+    font-size: 20px;
+    margin-left: 4%;
+    margin-top: 2%;
+    color: white;
+    padding: 2%;
+    cursor: pointer;
+}
+.menu_option{
+    font-size: 20px;
+    margin-left: 8%;
+    margin-top: 2%;
+    color: white;
+    padding: 2%;
+    cursor: pointer;
+}
+.menu_option:hover{
+    font-style: italic;
+}

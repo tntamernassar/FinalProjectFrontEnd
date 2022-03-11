@@ -5,20 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ea3d08b-7af0-4f62-a1f4-1ac2dc85f0f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Reports/Counters/Counters.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/Counters/js/Counters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/Counters/style/counters.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/ChartBuilder.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/TableBuilder.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/simple_table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ControlPanel/js/Management/UsersManagement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ControlPanel/style/control_panel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Network/MockNetworkAdapter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/organization_chart.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControlPanel/ControPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/ControPanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ControlPanel/ControPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/ControlPanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ControlPanel/js/ControlPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/js/ControlPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ControlPanel/style/controlpanel.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DashBoard/Dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/Dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DashBoard/config/links.js" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/config/Links.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DashBoard/js/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/js/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DashBoard/style/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/DashBoard/style/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Network/NetworkAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Network/NetworkAdapter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reports/Aborts/Aborts.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Aborts/Aborts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reports/Aborts/js/Aborts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Aborts/js/Aborts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/Aborts/style/aborts.css" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Aborts/style/aborts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/Counters/js/Counters.js" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Counters/js/Counters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User/UserManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/User/UserManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/ChartBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/ChartBuilder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Utils/Utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/popup.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +43,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="-" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -48,7 +61,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/styles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Network" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="liveEdit" />
@@ -56,6 +69,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\Network" />
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\styles" />
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\images" />
     </key>
@@ -77,7 +91,16 @@
       <workItem from="1641577731783" duration="178000" />
       <workItem from="1641577926742" duration="7555000" />
       <workItem from="1641737482159" duration="3285000" />
-      <workItem from="1641838378002" duration="23585000" />
+      <workItem from="1641838378002" duration="26395000" />
+      <workItem from="1642518225096" duration="595000" />
+      <workItem from="1643116351404" duration="2001000" />
+      <workItem from="1643792349233" duration="597000" />
+      <workItem from="1645136775047" duration="779000" />
+      <workItem from="1645452642786" duration="20000" />
+      <workItem from="1645715069041" duration="2451000" />
+      <workItem from="1645787960337" duration="9232000" />
+      <workItem from="1646687291803" duration="934000" />
+      <workItem from="1646751227718" duration="18991000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1639513305526</created>
@@ -156,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641668162869</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Created Aborts report :&#10;- E3 &#10;- Tracers&#10;Created Counters report :">
+      <created>1642452904910</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1642452904910</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,29 +199,30 @@
     <MESSAGE value="Menu design" />
     <MESSAGE value="Login functionality" />
     <MESSAGE value="Added Aborts and Utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Aborts and Utils" />
+    <MESSAGE value="Created Aborts report :&#10;- E3 &#10;- Tracers&#10;Created Counters report :" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Aborts report :&#10;- E3 &#10;- Tracers&#10;Created Counters report :" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1640121559163">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640121559163" />
-    <state x="543" y="0" key="CommitChangelistDialog2" timestamp="1641668161388">
+    <state x="543" y="0" key="CommitChangelistDialog2" timestamp="1642452903702">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1241" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640116320057" />
-    <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1640013564771" />
+    <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1642452903702" />
     <state x="-1655" y="97" key="CommitChangelistDialog2/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513304265" />
     <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1641668161388" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1639759348217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1639759348217" />
-    <state x="523" y="200" key="Vcs.Push.Dialog.v2" timestamp="1641668229242">
+    <state x="523" y="200" key="Vcs.Push.Dialog.v2" timestamp="1642452913245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1266" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640116326006" />
-    <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1640013571261" />
+    <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1642452913245" />
     <state x="-1688" y="253" key="Vcs.Push.Dialog.v2/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513593187" />
     <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1641668229242" />
     <state x="-1187" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1640127510567">

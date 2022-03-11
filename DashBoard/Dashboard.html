@@ -4,15 +4,25 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
 
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+
     <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/menu.css"/>
     <link rel="stylesheet" type="text/css" href="../styles/popup.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/simple_table.css"/>
     <link rel="stylesheet" type="text/css" href="style/dashboard.css"/>
 
     <script src="../Network/NetworkAdapter.js"></script>
+
     <script src="../Utils/Utils.js"></script>
+    <script src="../Utils/ChartBuilder.js"></script>
+    <script src="../Utils/TableBuilder.js"></script>
+
     <script src="../User/UserManager.js"></script>
     <script src="js/Dashboard.js"></script>
-    <script src="config/links.js"></script>
+    <script src="config/Links.js"></script>
 </head>
 <body>
 
@@ -33,29 +43,29 @@
         <span id="username_label">Tamer Nassar</span>
     </div>
     <div class="flatname_label_holder">
-        <span>TGR</span>
+        <span>TGR Dashboard</span>
     </div>
 
 </div>
+
 
 <div class="container">
     <!-- Left side menu -->
     <div class="menu">
         <br/>
         <div class="menu_header">Reports</div>
-        <div class="meu_option">Counters</div>
-        <div class="meu_option">Chemicals</div>
-        <div class="meu_option">PMs</div>
-        <div class="meu_option">Aborts</div>
+        <div onclick="Utils.redirect(Links.Counters)" class="menu_option">Counters</div>
+        <div class="menu_option">Chemicals</div>
+        <div class="menu_option">PMs</div>
+        <div onclick="Utils.redirect(Links.Aborts)" class="menu_option">Aborts</div>
         <br />
         <br />
         <div class="menu_header">Settings</div>
-        <div  class="meu_option" onclick="NewTab(ControlPanellink)">   Control Panel
-
-        </div>
-        <div class="meu_option">Notifications</div>
+        <div class="menu_option" onclick="Utils.redirect(Links.ControlPanel)">Control Panel</div>
+        <div class="menu_option">Notifications</div>
     </div>
 
+    <!-- Working Area -->
     <div class="inner_container">
 
         <!-- Holds machines overview -->
@@ -69,7 +79,10 @@
                     </ul>
                 </div>
             </div>
-            <center id="machine_leading"><img src="../images/loading.gif"/></center>
+            <div class="machines_container" id="machines_container">
+
+            </div>
+            <center id="machine_loading"><img src="../images/loading.gif"/></center>
 
         </div>
     </div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ControlPanel</title>
+
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/menu.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/organization_chart.css"/>
+    <link rel="stylesheet" type="text/css" href="style/control_panel.css"/>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/organization.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="../Network/MockNetworkAdapter.js"></script>
+    <script src="../User/UserManager.js"></script>
+    <script src="../Utils/Utils.js"></script>
+    <script src="../Utils/ChartBuilder.js"></script>
+    <script src="../Utils/TableBuilder.js"></script>
+
+    <script src="js/ControlPanel.js"></script>
+    <!-- Management -->
+    <script src="js/Management/UsersManagement.js"></script>
+
+
+</head>
+<body>
+
+<div class="header">
+
+    <div class="username_label_holder">
+        <span id="username_label">Tamer Nassar</span>
+    </div>
+    <div class="flatname_label_holder">
+        <span>TGR Control Panel</span>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <!-- Left side menu -->
+    <div class="menu" style="width: 20%;">
+        <br/>
+        <div class="menu_header">User Management</div>
+        <div class="menu_option" onclick="UsersManagement.view_users()">View Users</div>
+        <div class="menu_option">Add Admin</div>
+        <div class="menu_option">Remove Admin</div>
+        <div class="menu_option">Add User</div>
+        <div class="menu_option">Remove User</div>
+
+        <br />
+        <br />
+        <div class="menu_header">Permission Management</div>
+        <div class="menu_option">View User Permissions</div>
+        <div class="menu_option">Add machine management Permission</div>
+        <div class="menu_option">Remove machine management Permission</div>
+        <div class="menu_option">Add View report Permission</div>
+        <div class="menu_option">Remove View report Permission</div>
+
+        <br />
+        <br />
+        <div class="menu_header">Department Management</div>
+        <div class="menu_option">View Machines</div>
+        <div class="menu_option">Add Machines</div>
+        <div class="menu_option">Remove Machines</div>
+        <div class="menu_option">Add Machine's Attributes</div>
+        <div class="menu_option">Remove Machine's Attributes</div>
+
+        <br />
+        <br />
+        <div class="menu_header" onclick="UserManager.logout(Utils.redirect('../Login/Login.html'))">Log Out</div>
+    </div>
+
+    <!-- Working Area -->
+    <div class="inner_container report_card">
+
+
+
+    </div>
+
+</div>
+
+<script>
+    ControlPanel.init();
+</script>
+
+</body>
+</html>

@@ -34,15 +34,13 @@ const E3 = {
         console.log("Drawing E3");
         let e3_data = Aborts.data.e3["e3"];
         let e3_parent = document.getElementById("E3");
-
+        e3_parent.innerHTML = '';
         let ceid_tabs = document.createElement("div");
         e3_parent.appendChild(ceid_tabs);
         let e3_content = document.createElement("div");
         e3_parent.appendChild(e3_content);
 
         let ceids = Utils.distinct(e3_data.map((row)=>row["CEID"]));
-        let SUMMARY_STATUS = Utils.distinct(e3_data.map((row)=>row["SUMMARY_STATUS"]));
-        console.log(SUMMARY_STATUS);
         Utils.build_tabs(ceid_tabs, ceids.map((ceid)=>{
             return {
                 name: ceid,
@@ -164,8 +162,9 @@ const Aborts = {
         Aborts.data.tracers = tracers;
         Aborts.data.alerts = alerts;
 
-        console.log(e3);
-        console.log(tracers);
+        console.log(Aborts.data);
+
+        document.getElementById("tracers_tablink").click();
     },
 
     request_data: ()=>{

@@ -5,44 +5,10 @@ body, html {
     font-family: Roboto,sans-serif;
 }
 
-.header {
-    width: 100%;
-    height: 7%;
-    background-color: #3f6ad8;
-    overflow: auto;
-}
-
 .container {
     width: 100%;
     height: 93%;
     overflow: auto;
-}
-
-.menu {
-    width: 15%;
-    height: 100%;
-    float: left;
-    background-color: #121212;
-}
-
-.menu_header{
-    font-size: 20px;
-    margin-left: 4%;
-    margin-top: 2%;
-    color: white;
-    padding: 2%;
-    cursor: pointer;
-}
-.meu_option{
-    font-size: 20px;
-    margin-left: 8%;
-    margin-top: 2%;
-    color: white;
-    padding: 2%;
-    cursor: pointer;
-}
-.meu_option:hover{
-    font-style: italic;
 }
 
 .inner_container{
@@ -86,22 +52,11 @@ body, html {
 }
 
 
-.username_label_holder{
-    margin-top: 1%;
-    width: 15%;
-    font-size: 2vw;
-    color: white;
-    text-align: center;
+.machines_container{
+    width: 100%;
     float: left;
-}
-
-.flatname_label_holder{
-    margin-top: 1%;
-    font-size: 2vw;
-    color: white;
-    text-align: center;
-    float: right;
-    margin-right: 2%;
+    overflow: auto;
+    margin-top: 2%;
 }
 
 .machine_container{
@@ -110,47 +65,46 @@ body, html {
     line-height: 150px;
     margin: 2%;
     float: left;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     color: white;
-}
-
-.state_DOWN {background-color: #A52A2A	;}
-.state_UP {background-color: #77C66E;}
-.state_PM {background-color: #ffa500;}
-
-
-.column_name{
-    font-weight: 750;
-    font-size: 35px;
-    color: black;
-}
-
-.machine_name_value{
-    font-size: 25px;
-    color: black;
-}
-
-.machine_state{
-    font-weight: 750;
-    font-size: 35px;
-    color: black;
-}
-
-.machine_state_value{
-    font-size: 25px;
-    color: black;
+    cursor: pointer;
 }
 
 
-.att_name{
-    font-weight: 600;
-
-    font-size: 35px;
+.parent_entity_container{
+    margin: 2%;
+    float: left;
+    width: 150px;
+    height: 150px;
+    font-size: 20px;
+    text-align: center;
     color: black;
+    padding: 1%;
 }
 
-.att_value{
-    font-size: 25px;
-    color: black;
+.description_container{
+    width: 90%;
+    overflow: auto;
+    margin-top: 20%;
+    margin-left: 5%;
+}
+
+.parent_entity_popup{
+    overflow: auto;
+}
+
+
+.state_DOWN {color: #A52A2A;}
+.state_UP {color: #77C66E;}
+.state_PM {color: #ffa500;}
+
+.bg_state_DOWN {background-color: #A52A2A;}
+.bg_state_UP {background-color: #77C66E;}
+.bg_state_PM {background-color: #ffa500;}
+
+.attributes_table {
+    float: left;
+    width: 100%;
+    font-size: 15px;
 }

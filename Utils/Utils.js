@@ -35,6 +35,7 @@ const Utils = {
         });
     },
 
+
     /**
      * pre conditions:
      * DOM must contain div with id of {@param tab_name}
@@ -61,20 +62,28 @@ const Utils = {
      * Redirect to the given URL
      * **/
     redirect: (url)=>{
-        location.href = url;
+        window.open(url);
     },
 
 
     /**
      * pre conditions :
      * DOM must contain a modal div of the following format
+     *
        <div id="modal" class="modal">
+
          <!-- Modal content -->
+
          <div class="modal-content">
+
             <span class="close">&times;</span>
+
          <div id="popup_body"></div>
+
          </div>
+
         </div>
+
      * **/
     display_pop_up:(body)=>{
         let popup_body = document.getElementById("popup_body");

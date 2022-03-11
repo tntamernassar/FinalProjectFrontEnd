@@ -22,7 +22,7 @@ let NetworkAdapter = {
             request["id"] = id;
         }
         NetworkAdapter.requests[id] = response_cb;
-        this.websocket.send(JSON.stringify(request));
+        this.websocket.send("TGR " + JSON.stringify(request));
     },
 
 
@@ -36,9 +36,16 @@ let NetworkAdapter = {
         }
     },
 
+    /**
+     * Initialize a connection with the server
+     *
+     * onConnection - continues function that triggers after a connection have been established
+     * onError - continues function that triggers if an error occurred while connecting
+     * **/
     init: (onConnection, onError)=>{
         try{
             this.websocket = new WebSocket("ws://localhost:8080/");
+            // this.websocket = new WebSocket("ws://10.114.136.8:80/");
             this.websocket.onmessage = NetworkAdapter.on_response;
             this.websocket.onerror = onError;
             this.websocket.onopen = onConnection;

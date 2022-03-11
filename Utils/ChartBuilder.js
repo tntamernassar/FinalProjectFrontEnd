@@ -151,4 +151,8 @@ let ChartBuilder = {
 
     },
 
+    organization_chart_builder: ()=>{
+
+    }
+
 };

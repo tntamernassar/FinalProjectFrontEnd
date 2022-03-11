@@ -18,6 +18,7 @@ let UserManager = {
         localStorage.removeItem("user");
         cont();
     },
+
     getuser:()=>{
         return JSON.parse(localStorage.getItem("user"));
     }

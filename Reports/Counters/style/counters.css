@@ -4,8 +4,9 @@
 }
 
 .counter_div{
-    width: 45%;
+    width: 95%;
     float: left;
     margin-left: 2%;
     margin-top: 1%;
+    padding: 1%;
 }

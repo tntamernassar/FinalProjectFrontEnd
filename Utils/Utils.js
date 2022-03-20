@@ -125,4 +125,23 @@ const Utils = {
         return elements.filter((e, i)=>elements.indexOf(e) == i);
     },
 
+
+    make_check_box_container: (value)=>{
+        let label = document.createElement("label");
+        label.className = "checkbox_container";
+        label.innerHTML = value + `
+            <input type="checkbox"/>
+            <span class="checkmark"></span>
+        `;
+        return label;
+    },
+
+
+    make_button: (value)=>{
+        let button = document.createElement("button");
+        button.innerHTML = value;
+        button.className = "button";
+
+        return button;
+    }
 }

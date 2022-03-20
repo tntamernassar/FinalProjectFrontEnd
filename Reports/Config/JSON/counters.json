@@ -1,0 +1,9 @@
+{
+  "groups": [{
+    "name": "CleanPM",
+    "checklists": ["TGR1274R1LChCleanArmMovePM", "TGR1274R2LChCleanArmMovePM", "TGR1274R1UChCleanArmMovePM", "TGR1274R2UChCleanArmMovePM"]
+  },{
+    "name": "Filters",
+    "checklists": ["TGRcxDHF1FilterChangePM"]
+  }]
+}

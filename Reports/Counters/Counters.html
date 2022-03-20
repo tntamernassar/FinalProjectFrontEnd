@@ -8,11 +8,13 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
     <script src="../../Network/NetworkAdapter.js"></script>
     <script src="../../Utils/Utils.js"></script>
     <script src="../../Utils/TableBuilder.js"></script>
     <script src="../../Utils/ChartBuilder.js"></script>
+    <script src="../Config/ConfigManager.js"></script>
 
     <link rel="stylesheet" type="text/css" href="../../styles/styles.css"/>
     <link rel="stylesheet" type="text/css" href="../../styles/tabs.css"/>
@@ -30,7 +32,10 @@
 </div>
 
 <script>
-    Counters.init();
+    ConfigManager.read_json("counters", (config)=>{
+        console.log(config);
+        Counters.init(config);
+    })
 </script>
 
 </body>

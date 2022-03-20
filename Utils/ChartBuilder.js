@@ -151,8 +151,79 @@ let ChartBuilder = {
 
     },
 
+    /**
+     * from https://www.highcharts.com/docs/chart-and-series-types/organization-chart
+     *
+     * In Highcharts, the organization chart resembles the sankey chart in the way it is built around nodes and links.
+     *
+     * The nodes of an org chart are the positions or persons,
+     * while the links are the lines showing the relations between them.
+     * The data structure of the options defines the links.
+     *
+     * In the nodes array of the series,
+     * each node is identified by an id referring to the id in the link.
+     *
+     * Additional properties like title,
+     * description and image may be set in the individual node options.
+     * **/
     organization_chart_builder: ()=>{
+        let builder = (parent_id, title, nodes, links, levels)=>{
+            Highcharts.chart(parent_id, {
+                chart: {
+                    height: 600,
+                    inverted: true
+                },
+                title: {
+                    text: title
+                },
+                credits:{
+                    enabled:false
+                },
+                accessibility: {
+                    point: {
+                        descriptionFormatter: function (point) {
+                            let nodeName = point.toNode.name,
+                                nodeId = point.toNode.id,
+                                nodeDesc = nodeName === nodeId ? nodeName : nodeName + ', ' + nodeId,
+                                parentDesc = point.fromNode.id;
+                            return point.index + '. ' + nodeDesc + ', reports to ' + parentDesc + '.';
+                        }
+                    }
+                },
 
+                series: [{
+                    type: 'organization',
+                    name: 'Organization',
+                    keys: ['from', 'to'],
+                    data: links,
+                    levels: levels,
+                    nodes: nodes,
+                    colorByPoint: false,
+                    color: '#007ad0',
+                    dataLabels: {
+                        color: 'white'
+                    },
+                    borderColor: 'white',
+                    nodeWidth: 65
+                }],
+                tooltip: {
+                    outside: true
+                },
+                exporting: {
+                    allowHTML: true,
+                    sourceWidth: 800,
+                    sourceHeight: 600
+                }
+
+            });
+        }
+        return {
+            builder: builder,
+            make_link : (from, to) => { return [from, to] },
+            make_node : (id, title, name)=> { return { id: id, title: title, name: name } },
+            make_level: (level, color)=> { return { level: level, color: color } }
+
+        }
     }
 
 };

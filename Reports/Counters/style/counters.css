@@ -9,4 +9,11 @@
     margin-left: 2%;
     margin-top: 1%;
     padding: 1%;
+    overflow: auto;
+}
+
+.graph_holder{
+    float: left;
+    width: 47%;
+    margin: 1%;
 }

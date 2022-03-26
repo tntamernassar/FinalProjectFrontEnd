@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Counters</title>
+    <title>Chemicals</title>
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -18,34 +18,37 @@
 
     <link rel="stylesheet" type="text/css" href="../../styles/styles.css"/>
     <link rel="stylesheet" type="text/css" href="../../styles/tabs.css"/>
-    <link rel="stylesheet" type="text/css" href="../../styles/simple_table.css"/>
     <link rel="stylesheet" type="text/css" href="../../styles/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/simple_table.css"/>
 
-    <link rel="stylesheet" type="text/css" href="style/counters.css">
-    <script src="js/Counters.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/chemicals.css">
+    <script src="js/Chemicals.js"></script>
 
 </head>
 <body>
 
+
 <div class="header">
+
     <div class="username_label_holder">
         <span id="username_label">Tamer Nassar</span>
     </div>
     <div class="flatname_label_holder">
-        <span>TGR Counters</span>
+        <span>TGR Chemicals</span>
     </div>
+
 </div>
 
+<div class="container report_card" id="container">
 
-<div id="container">
+</div>
+
+<div class="second_container report_card" id="second_container">
 
 </div>
 
 <script>
-    ConfigManager.read_json("counters", (config)=>{
-        console.log(config);
-        Counters.init(config);
-    })
+    Chemicals.init();
 </script>
 
 </body>

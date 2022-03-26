@@ -91,6 +91,7 @@ const Tracers = {
         bar_chart.builder(bar_chart_div.id,
             "Entity VS Tracers #",
             "Tracers #",
+            [],
             "Tracers",
             Utils.distinct(relevant_data.map((r)=>r["ENTITY"])).map((e)=>bar_chart.make_bar(
                 e,

@@ -45,7 +45,6 @@ let NetworkAdapter = {
     init: (onConnection, onError)=>{
         try{
             this.websocket = new WebSocket("ws://localhost:8080/");
-            // this.websocket = new WebSocket("ws://10.114.136.8:80/");
             this.websocket.onmessage = NetworkAdapter.on_response;
             this.websocket.onerror = onError;
             this.websocket.onopen = onConnection;

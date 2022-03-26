@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>TGR Dashboard</title>
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
 
@@ -38,14 +38,12 @@
 
 
 <div class="header">
-
     <div class="username_label_holder">
         <span id="username_label">Tamer Nassar</span>
     </div>
     <div class="flatname_label_holder">
         <span>TGR Dashboard</span>
     </div>
-
 </div>
 
 
@@ -55,9 +53,9 @@
         <br/>
         <div class="menu_header">Reports</div>
         <div onclick="Utils.redirect(Links.Counters)" class="menu_option">Counters</div>
-        <div class="menu_option">Chemicals</div>
-        <div class="menu_option">PMs</div>
+        <div onclick="Utils.redirect(Links.Chemicals)" class="menu_option">Chemicals</div>
         <div onclick="Utils.redirect(Links.Aborts)" class="menu_option">Aborts</div>
+        <div class="menu_option">PMs</div>
         <br />
         <br />
         <div class="menu_header">Settings</div>

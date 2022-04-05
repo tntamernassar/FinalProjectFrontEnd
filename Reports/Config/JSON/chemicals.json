@@ -3,7 +3,6 @@
     {
       "title": "PROM - TGRcp",
       "ceid": ["TGRcp", "TGRch"],
-      "CABS": [""],
       "IReq": 15
     },
 
@@ -35,18 +34,6 @@
       "title": "JNT nDTD - TGRjr",
       "ceid": ["TGRjr"],
       "IReq": 31
-    },
-
-    {
-      "title": "JNT DTD - TGRjd",
-      "ceid": ["TGRjd"],
-      "IReq": 10
-    },
-
-    {
-      "title": "BLU 70c - TGRbv/s7",
-      "ceid": ["TGRbv", "TGRs7", "TGRca"],
-      "IReq": 30
     }
   ]
 }

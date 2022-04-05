@@ -5,6 +5,21 @@ let Chemicals = {
     get_group_availability: (group, data)=> data["availability"].filter(row => group["ceid"].indexOf(row["CEID"]) >= 0),
     get_group_current_shift: (group, data)=> data["cs_out"].filter(row => group["ceid"].indexOf(row["CEID"]) >= 0),
     get_group_previous_shift: (group, data)=> data["ps_out"].filter(row => group["ceid"].indexOf(row["CEID"]) >= 0),
+    get_group_comments: (group, data)=>{
+        let comments = data["comments"];
+        let machines = Utils.distinct(Chemicals.get_group_availability(group, data).map(row => row["ENTITY"]));
+        comments = comments.filter(comment => machines.indexOf(comment["ENTITY"]) >= 0 );
+        return comments;
+    },
+    get_group_tracers: (group, data)=>{
+        let tracers = data["tracers"];
+        let machines = Utils.distinct(Chemicals.get_group_availability(group, data).map(row => row["ENTITY"]));
+        // get group tracers
+        tracers = tracers.filter(tracer => machines.indexOf(tracer["ENTITY"]) >= 0 );
+        // get last 7 days tracers
+        tracers = tracers.filter(tracers => Utils.str_date_diff(tracers["CREATED_DATE"], new Date()) <= 7 * 24 * 60);
+        return tracers;
+    },
 
     up_cell: ()=>{
         return "<div class='up_cell'>Up</div>";
@@ -22,23 +37,27 @@ let Chemicals = {
         let group_availability = Chemicals.get_group_availability(group, data);
         let group_current_shift = Chemicals.get_group_current_shift(group, data);
         let group_previous_shift = Chemicals.get_group_previous_shift(group, data);
-
-        console.log(group_availability);
+        let group_tracers = Chemicals.get_group_tracers(group, data);
+        let group_comments = Chemicals.get_group_comments(group, data);
 
         parent.innerHTML = '<H1>$title</H1>'.replace("$title", title);
         let tables_container = document.createElement("div");
         tables_container.className = "tables_container";
         parent.appendChild(tables_container);
 
-        let machines = Utils.distinct(group_availability.map(row => row["ENTITY"].substr(0, 6)));
-        let spins = Utils.distinct(group_availability.map(row => row["ENTITY"].split("_")[1]).filter(sp => sp.startsWith("SP")));
-        let cabs = Utils.distinct(group_availability.map(row => row["ENTITY"].split("_")[1]).filter(cab => cab.startsWith("CAB")));
+        let machines = Utils.distinct(group_availability.map(row => row["ENTITY"].substr(0, row["ENTITY"].indexOf("_"))));
         let lps = Utils.distinct(data["availability"].map(row => row["ENTITY"].split("_")[1]).filter(lp => lp.startsWith("LP")));
+        let cabs = Utils.distinct(group_availability.map(row => row["ENTITY"].split("_")[1]).filter(cab => cab.startsWith("CAB")));
+        let ipas = Utils.distinct(data["availability"].map(row => row["ENTITY"].split("_")[1]).filter(ipa => ipa.startsWith("IPA")));
+        let spins = Utils.distinct(group_availability.map(row => row["ENTITY"].split("_")[1]).filter(sp => sp.startsWith("SP")));
+
+        cabs = cabs.sort((a, b) => Number(a.substr(3)) - Number(b.substr(3)) );
+        spins = spins.sort((a, b) => Number(a.substr(2)) - Number(b.substr(2)) );
 
         let machines_rows = machines.map(machine => { return {"machine": machine} });
-        let lp_rows = [], cab_rows = [], spins_rows = [], out_rows = [];
+        let lp_rows = [], cab_rows = [], ipa_rows = [], spins_rows = [], out_rows = [], tracers_rows = [];
         machines.forEach(machine => {
-            let lp_row = {}, cab_row = {}, spin_row = {};
+            let lp_row = {}, cab_row = {}, spin_row = {}, ipa_row = {};
 
             lps.forEach(lp => {
                 let lp_name = machine + "_" + lp;
@@ -60,6 +79,16 @@ let Chemicals = {
                 }
             });
 
+            ipas.forEach(ipa => {
+                let ipa_name = machine + "_" + ipa;
+                let ipa_availability = data["availability"].filter(row => row["ENTITY"] === ipa_name)[0];
+                if (ipa_availability) {
+                    ipa_row[ipa] = ipa_availability["AVAILABILITY"] === 'Up' ? Chemicals.up_cell() : Chemicals.down_cell(ipa_availability["STATE"]);
+                }else{
+                    ipa_row[ipa] = "-";
+                }
+            });
+
             spins.forEach(spin => {
                 let spin_name = machine + "_" + spin;
                 let spin_availability = group_availability.filter(row => row["ENTITY"] === spin_name)[0];
@@ -70,38 +99,39 @@ let Chemicals = {
                 }
             });
 
+
             let machine_current_shift_row = group_current_shift.filter(row => row["SUBENTITY"].startsWith(machine));
             let machine_previous_shift_row = group_previous_shift.filter(row => row["SUBENTITY"].startsWith(machine));
             let cs = machine_current_shift_row.reduce((acc, curr)=> acc + curr["WAFER"], 0);
             let ps = machine_previous_shift_row.reduce((acc, curr)=> acc + curr["WAFER"], 0);
 
-            spins_rows.push(spin_row);
-            cab_rows.push(cab_row);
             lp_rows.push(lp_row);
-            out_rows.push({"cs": cs, "ps": ps});
+            cab_rows.push(cab_row);
+            ipa_rows.push(ipa_row);
+            spins_rows.push(spin_row);
+            out_rows.push({ "cs": cs, "ps": ps });
+            tracers_rows.push({ "tracers": group_tracers.filter(row => row["ENTITY"].startsWith(machine)).length })
         });
 
-        console.log(out_rows)
-        let machines_table = document.createElement("div");
-        tables_container.appendChild(machines_table);
+        let machines_table = document.createElement("div"),
+         lp_table = document.createElement("div"),
+         cab_table = document.createElement("div"),
+         ipa_table = document.createElement("div"),
+         spins_table = document.createElement("div"),
+         outs_table = document.createElement("div"),
+         tracers_table = document.createElement("div"),
+         comments_table = document.createElement("div");
 
-        let lp_table = document.createElement("div");
-        tables_container.appendChild(lp_table);
-
-        let cab_table = document.createElement("div");
-        tables_container.appendChild(cab_table);
-
-        let spins_table = document.createElement("div");
-        tables_container.appendChild(spins_table);
-
-        let outs_table = document.createElement("div");
-        tables_container.appendChild(outs_table);
+        tables_container.append(machines_table, lp_table, cab_table, ipa_table, spins_table, outs_table, tracers_table, comments_table);
 
         tableBuilder(machines_table, ["Entity"], ["machine"], machines_rows, "sub_table", (row)=>{});
         tableBuilder(lp_table, lps, lps, lp_rows, "sub_table", (row)=>{});
         tableBuilder(cab_table, cabs, cabs, cab_rows, "sub_table", (row)=>{});
+        tableBuilder(ipa_table, ipas, ipas, ipa_rows, "sub_table", (row)=>{});
         tableBuilder(spins_table, spins, spins, spins_rows, "sub_table", (row)=>{});
         tableBuilder(outs_table, ["cs", "ps"], ["cs", "ps"], out_rows, "sub_table", (row)=>{});
+        tableBuilder(tracers_table, ["Tracers"], ["tracers"], tracers_rows, "sub_table", (row)=>{});
+        tableBuilder(comments_table, ["Entity", "Date", "Comment"], ["ENTITY", "TXN_DATE", "COMMENTS"], group_comments, "sub_table", (row)=>{});
 
     },
 
@@ -114,22 +144,26 @@ let Chemicals = {
             let group_availability = Chemicals.get_group_availability(group, data);
             let group_current_shift = Chemicals.get_group_current_shift(group, data);
             let group_previous_shift = Chemicals.get_group_previous_shift(group, data);
+            let group_tracers = Chemicals.get_group_tracers(group, data);
 
             let title = group["title"];
             let IReq = group["IReq"];
             let available = group_availability.filter(row => row["AVAILABILITY"] === "Up" && row["ENTITY"].indexOf("SP") >= 0).length;
-            let total = group_availability.filter(row => row["ENTITY"].indexOf("SP") >= 0).length;
+            let total = group_availability.filter(row =>  row["STATE"] !== "Bagged" && row["ENTITY"].indexOf("SP") >= 0).length;
             let cs_out = group_current_shift.reduce((acc, curr)=> acc + curr["WAFER"], 0);
             let ps_out = group_previous_shift.reduce((acc, curr)=> acc + curr["WAFER"], 0);
+            let tracers_num = group_tracers.length;
+
             let valid_ireq = available >= IReq ? "valid_ireq" : "invalid_ireq";
 
             group_container.innerHTML = `
             <span><b>$title</b></span>
             <div class="group_info">
                 <span class="$valid_ireq"><b>$available / $total</b></span><br/>
-                <span><b>IReq : $IReq</b></span><br/>
+                <span><b>AReq : $IReq</b></span><br/>
                 <span><b>CS Out : $cs_out</b></span><br/>
-                <span><b>PS Out : $ps_out</b></span>
+                <span><b>PS Out : $ps_out</b></span><br />
+                <span><b>Tracers <span style="font-size: 15px;">(7 days)</span> : $tracers_num</b></span>
             </div>
             `.replace("$title", title)
                 .replace("$available", available.toString())
@@ -137,11 +171,10 @@ let Chemicals = {
                 .replace("$IReq", IReq)
                 .replace("$cs_out", cs_out.toString())
                 .replace("$ps_out", ps_out.toString())
+                .replace("$tracers_num", tracers_num.toString())
                 .replace("$valid_ireq", valid_ireq);
 
-            group_container.onclick = ()=>{
-                Chemicals.draw_group(group, data);
-            };
+            group_container.onclick = ()=>{ Chemicals.draw_group(group, data) };
 
             parent.appendChild(group_container);
         });
@@ -157,9 +190,16 @@ let Chemicals = {
                 NetworkAdapter.send({
                     "action": "get_report",
                     "report": "chemicals"
-                }, (response) => {
-                    Chemicals.draw_groups(config["groups"], response["data"]);
-                    console.log(response);
+                }, (chemicals) => {
+                    NetworkAdapter.send({
+                        "action": "get_report",
+                        "report": "tracers"
+                    }, (tracers)=>{
+                        console.log(chemicals);
+                        console.log(tracers);
+                        chemicals["data"]["tracers"] = tracers["data"]["tracers"];
+                        Chemicals.draw_groups(config["groups"], chemicals["data"]);
+                    });
                 });
             }, Chemicals.error);
         });

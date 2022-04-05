@@ -6,7 +6,7 @@ const Utils = {
      *
      * tab = {
      *     "name" - name of the tab
-     *     "cont" - cont function wafter clicking the tab
+     *     "cont()" - cont function after clicking the tab
      *     "content_classname" - classname of the content
      * }
      * **/

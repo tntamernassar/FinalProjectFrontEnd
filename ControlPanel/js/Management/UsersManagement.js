@@ -16,7 +16,6 @@ let UsersManagement = {
             "action": "get_users",
             "department": "TGR"
         }, (response)=>{
-            console.log(response);
             /** response format : { users: list of users } **/
             let nodes = [], links = [], levels = [ organization_chart_builder.make_level(0, '#980104') ];
             let all = response["users"];
@@ -126,6 +125,69 @@ let UsersManagement = {
                     });
                 }
             });
+        });
+    },
+
+    View_User_Permissions: () => {
+        ControlPanel.resent_inner_container();
+        let table_builder = TableBuilder.simple_table_builder();
+        let inner_container = document.getElementById("inner_container");
+        let tabs_div = document.createElement("div");
+        inner_container.appendChild(tabs_div);
+
+        let tabs_content_div = document.createElement("div");
+        inner_container.appendChild(tabs_content_div);
+
+        UsersManagement.network_adapter.send({
+            "action": "get_users",
+            "department": "TGR"
+        }, (user_response) => {
+            UsersManagement.network_adapter.send({
+                "action": "get_permissions",
+                "department": "TGR"
+            }, (permissions_response) => {
+                UsersManagement.network_adapter.send({
+                    "action": "get_user_permissions",
+                    "department": "TGR"
+                }, (user_permissions_response) => {
+
+                    let users = user_response["users"];
+                    let permissions = permissions_response["permissions"];
+                    let permissionsuser = user_permissions_response["user_permissions"];
+
+
+                    let tabs = [];
+                    users.forEach(user => {
+                        let name = user["first_name"] + " " + user["last_name"];
+                        let username = user["username"];
+                        let id_per = permissionsuser.filter((row) => row["user_name"] == username);
+
+                        let after = id_per.map((x) => permissions.filter((row) => row["Permissions_id"] == x["Permissions_id"])[0] );
+                        console.log(after)
+
+                        tabs.push(
+                            {
+                                "name": name,
+                                "cont": () => {
+                                    console.log(id_per);
+                                    document.getElementById(name).innerHTML="";
+                                    table_builder(
+                                        document.getElementById(name),
+                                        ["Permission ID", "description","name"],
+                                        ["Permissions_id", "Permissions_description","Name"],
+                                        after,
+                                        "permissions_table",
+                                        (r) => {
+                                            console.log(r);
+                                        });
+                                },
+                                "content_classname": "user_permissions_content"
+                            })
+                    });
+                    Utils.build_tabs(tabs_div, tabs, inner_container);
+
+                })
+            })
         });
     },
 

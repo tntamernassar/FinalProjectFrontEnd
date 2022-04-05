@@ -1,55 +1,58 @@
 let Counters = {
 
-    color: (row) => {
-        let pm_status = row["PM_STATUS"];
-        if (pm_status === "Due") {
+    color: (value, limit) => {
+        if (value >= limit){
             return 'red';
-        } else {
+        }else {
             return '#1BA5D1';
         }
     },
 
-    frequency: (row) => {
+    frequency: (machine, checklist, data) => {
         let units = {
-            1: 60, // minutes
-            2: 60 * 60, // hours
-            3: 60 * 60 * 24, // days
-            4: 60 * 60 * 24 * 7, // week
+            1: 1/(24*60), // minutes
+            2: 1/24, // hours
+            3: 1, // days
+            4: 7, // week
         };
-        let unit = row["CYCLE_UNIT"];
-        let value = row["CYCLE_VALUE"];
+        let unit = data["frequencies"][machine][checklist]["unit"];
+        let value = data["frequencies"][machine][checklist]["value"];
         return units[unit] * value;
     },
 
-    counter: (row) => {
-        let time_until_pm = Utils.str_date_diff(new Date(), row["OVERDUE_DATE"]) * 60;
-        let freq = Counters.frequency(row) ;
-        console.log(row["ENTITY"], row["OVERDUE_DATE"], time_until_pm, freq);
-
-        return (freq - time_until_pm) / (60 * 60 * 24).toFixed(2); // in days
+    counter: (machine, checklist, data) => {
+        let last_pm = data["PMs"][machine][checklist];
+        let diff = Number((Utils.str_date_diff(last_pm, new Date()) / (60 * 24)).toFixed(2));
+        return diff;
     },
 
     draw_checklist: (parent, checklist, data)=>{
-        let checklist_data = data.filter(row => row["CHECKLIST_NAME"] == checklist);
+        let checklist_machines = Object.keys(data["frequencies"]).sort();
+        checklist_machines = checklist_machines.filter(machine => checklist in data["frequencies"][machine] && checklist in data["PMs"][machine]);
+
         let bar_chart_builder = ChartBuilder.bar_chart_builder();
 
         let graph_holder = document.createElement("div");
+        graph_holder.className = "graph_holder";
         graph_holder.id = checklist + "_holder";
         parent.appendChild(graph_holder);
 
-        let counters = checklist_data.map(
-            (row) =>
+        let counters = checklist_machines.map(
+            (machine, index) =>
                 bar_chart_builder.make_bar(
-                    row["ENTITY"],
-                    Counters.counter(row),
-                    Counters.color(row)
+                    machine,
+                    Counters.counter(machine, checklist, data),
+                    Counters.color(Counters.counter(machine, checklist, data), Counters.frequency(machine, checklist, data))
                 )
         );
-        console.log(counters)
+
+        let limit = checklist_machines.map(machine => Counters.frequency(machine, checklist, data));
+        console.log(counters, limit)
 
         bar_chart_builder.builder(graph_holder.id,
             checklist,
             "Days",
+            limit,
             "UTP Time",
             counters
         );

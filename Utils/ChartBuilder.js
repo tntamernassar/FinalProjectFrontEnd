@@ -11,7 +11,7 @@ let ChartBuilder = {
     },
 
     bar_chart_builder: ()=>{
-        let builder =  (parent_id, title, y_axis_title, series_name, data)=>{
+        let builder =  (parent_id, title, y_axis_title, limit, series_name, data)=>{
             let formatted_data = ChartBuilder.format_data(data);
 
             Highcharts.chart(parent_id, {
@@ -42,6 +42,11 @@ let ChartBuilder = {
                     {
                         "name": series_name,
                         data: formatted_data.data
+                    },
+                    {
+                        type: 'spline',
+                        name: 'Limit',
+                        data: limit
                     }
                 ]
             });
@@ -49,7 +54,7 @@ let ChartBuilder = {
 
         return {
             builder: builder,
-            make_bar: (category, value, color)=>{ return {"category": category, "value": value, "color": color} }
+            make_bar: (category, value, color)=>{ return {"category": category, "value": value, "color": color} },
         }
 
     },

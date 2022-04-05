@@ -4,4 +4,5 @@ const Links = {
 
     Counters: '../Reports/Counters/Counters.html',
     Aborts: '../Reports/Aborts/Aborts.html',
+    Chemicals: '../Reports/Chemicals/chemicals.html',
 };

@@ -4,6 +4,18 @@
     "checklists": ["TGR1274R1LChCleanArmMovePM", "TGR1274R2LChCleanArmMovePM", "TGR1274R1UChCleanArmMovePM", "TGR1274R2UChCleanArmMovePM"]
   },{
     "name": "Filters",
-    "checklists": ["TGRcxDHF1FilterChangePM"]
+    "checklists": ["TGRchPROMfilterChangePM", "TGRIPAFilterChangePM", "TGRXMCABFilterChangePM",
+                  "TGRch74DIWFilterChangePM", "TGRch74NH4OHFilterChangePM", "TGRcxDHF1FilterChangePM",
+                  "TGRcxDIWFilterChangePM", "TGRcxDHF2FilterChangePM", "TGRTRCDTDCABFilterChangePM",
+                  "TGRTRCnDTDCABFilterChangePM", "TGRCAB4NH4OHFilterChangePM", "TGRCUCBDIWFilterChangePM",
+                  "TGR1274TRC70CfilterchangePM", "TGRcjCAB1JNTFilterChangePM", "TGRcjCAB2JNTFilterChangePM", "TGRcjDIWFilterChangePM"
+                  ]
+  },{
+    "name": "Super Clean",
+    "checklists": ["TGRG1LChamberSuprecleanPM", "TGRG2LChamberSupercleanPM", "TGRG1UChamberSupercleanPM", "TGRG2UChamberSupercleanPM"]
+  },{
+    "name": "Pumps",
+    "checklists": ["TGRIPAPumpChangePM", "TGRch74NH4OHpumpchangePM", "TGRAnnDHF1PumpChangeBackPM",
+                   "TGRAnnDHF1PumpChangeFrontPM", "TGRAnnDHF2PumpChangeBackPM", "TGRAnnDHF2PumpChangeFrontPM"]
   }]
 }

@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ea3d08b-7af0-4f62-a1f4-1ac2dc85f0f6" name="Default Changelist" comment="Created Aborts report :&#10;- E3 &#10;- Tracers&#10;Created Counters report :">
+      <change afterPath="$PROJECT_DIR$/Reports/Config/ConfigManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/Config/JSON/counters.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/checkboxes.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/PMs/style/PMs.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControlPanel/ControlPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/ControlPanel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControlPanel/js/Management/UsersManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/js/Management/UsersManagement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Network/MockNetworkAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Network/MockNetworkAdapter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Network/NetworkAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Network/NetworkAdapter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ControlPanel/js/ControlPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/js/ControlPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/Config/ConfigManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Config/ConfigManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ControlPanel/style/control_panel.css" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/style/control_panel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Utils/TableBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/TableBuilder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/Utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -49,14 +53,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Network" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Reports/Config/JSON" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="liveEdit" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\Reports\Config\JSON" />
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\Network" />
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\styles" />
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\images" />
@@ -93,8 +98,10 @@
       <workItem from="1646687291803" duration="934000" />
       <workItem from="1646751227718" duration="32506000" />
       <workItem from="1647646171311" duration="5036000" />
-      <workItem from="1647772360480" duration="1747000" />
-      <workItem from="1649191530955" duration="2011000" />
+      <workItem from="1647772360480" duration="46184000" />
+      <workItem from="1648461270113" duration="9729000" />
+      <workItem from="1648553031100" duration="3221000" />
+      <workItem from="1649066984290" duration="8939000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1639513305526</created>
@@ -187,7 +194,21 @@
       <option name="project" value="LOCAL" />
       <updated>1647017006506</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Re-designed Dashboard :&#10;   - Grouped machines with the same parent&#10;   &#10;Created Control Panel infrastructure">
+      <created>1647799740303</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1647799740303</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Chemicals report design">
+      <created>1648296996371</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1648296996371</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,44 +223,32 @@
     <MESSAGE value="Added Aborts and Utils" />
     <MESSAGE value="Created Aborts report :&#10;- E3 &#10;- Tracers&#10;Created Counters report :" />
     <MESSAGE value="Re-designed Dashboard :&#10;   - Grouped machines with the same parent&#10;   &#10;Created Control Panel infrastructure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-designed Dashboard :&#10;   - Grouped machines with the same parent&#10;   &#10;Created Control Panel infrastructure" />
+    <MESSAGE value="Chemicals report design" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chemicals report design" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1640121559163">
-      <screen x="-1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="-1230" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640121559163" />
-    <state x="543" y="0" key="CommitChangelistDialog2" timestamp="1647017004607">
+    <state x="543" y="0" key="CommitChangelistDialog2" timestamp="1648296994905">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="-1241" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640116320057" />
     <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1642452903702" />
-    <state x="-1655" y="97" key="CommitChangelistDialog2/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513304265" />
-    <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1647017004607" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1639759348217">
+    <state x="543" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1648296994905" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1648297830272">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1639759348217" />
-    <state x="523" y="200" key="Vcs.Push.Dialog.v2" timestamp="1647017033943">
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1648297830272" />
+    <state x="523" y="200" key="Vcs.Push.Dialog.v2" timestamp="1648297834236">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="-1266" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640116326006" />
     <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1642452913245" />
-    <state x="-1688" y="253" key="Vcs.Push.Dialog.v2/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513593187" />
-    <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1647017033943" />
-    <state x="-1187" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1640127510567">
-      <screen x="-1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="-1187" y="411" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1640127510567" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1639770476403" />
-    <state x="-1479" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1639513333205">
-      <screen x="-2560" y="0" width="2560" height="1040" />
-    </state>
-    <state x="-1479" y="426" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824/-2560.0.2560.1040@-2560.0.2560.1040" timestamp="1639513333205" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1647036737286">
+    <state x="523" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1648297834236" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1649097708309">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1642430906350" />
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1647036737286" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1649097708309" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1649097828820">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1649097828820" />
   </component>
 </project>

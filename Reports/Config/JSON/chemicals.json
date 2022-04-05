@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "title": "PROM - TGRcp",
+      "ceid": ["TGRcp", "TGRch"],
+      "IReq": 15
+    },
+
+    {
+      "title": "DHF - TGRcx",
+      "ceid": ["TGR1x", "TGR2x"],
+      "IReq": 70
+    },
+
+    {
+      "title": "BLU DTD - TGRbd",
+      "ceid": ["TGRbd"],
+      "IReq": 69
+    },
+
+    {
+      "title": "BLU nDTD - TGRbr",
+      "ceid": ["TGRbr", "TGRs7", "TGRca"],
+      "IReq": 70
+    },
+
+    {
+      "title": "XM - TGRce",
+      "ceid": ["TGRce"],
+      "IReq": 10
+    },
+
+    {
+      "title": "JNT nDTD - TGRjr",
+      "ceid": ["TGRjr"],
+      "IReq": 31
+    }
+  ]
+}

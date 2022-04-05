@@ -9,7 +9,17 @@ let MockDB = {
         { "username": "ahmadfad", "email": "ahmad.fadila@mock.com", "first_name": "Adhmad", "last_name": "Fadila", "uid": "F867LF", "admin": false },
     ],
 
-    PERMISSIONS: [],
+    PERMISSIONS: [
+        {"Permissions_id": 1 ,"Name": "Add Admin","Permissions_description":"Allow User To Add Admin" },
+        {"Permissions_id": 2 ,"Name": "Add Machine","Permissions_description":"Allow User To Add Machine" },
+    ],
+
+    USER_PERMISSIONS: [
+        {"Permissions_id": 1 ,"user_name":"tamernas"},
+        {"Permissions_id": 2 ,"user_name":"tamernas"},
+        {"Permissions_id": 1 ,"user_name":"adnansal" },
+        {"Permissions_id": 2 ,"user_name":"aboomar" },
+    ],
 
 }
 
@@ -18,7 +28,10 @@ let MockNetworkAdapter = {
     responses: {
         "get_users": {"users": MockDB.USERS, "success": true},
         "add_admin": {"success": true},
-        "remove_admin": {"success": true}
+        "remove_admin": {"success": true},
+        "get_permissions": {"permissions": MockDB.PERMISSIONS, "success": true},
+        "get_user_permissions": {"user_permissions": MockDB.USER_PERMISSIONS, "success": true},
+
     },
 
     send: (request, response_cb)=>{

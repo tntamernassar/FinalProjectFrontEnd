@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ea3d08b-7af0-4f62-a1f4-1ac2dc85f0f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Reports/Config/ConfigManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/Config/JSON/counters.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/checkboxes.css" afterDir="false" />
+    <list default="true" id="3ea3d08b-7af0-4f62-a1f4-1ac2dc85f0f6" name="Default Changelist" comment="Created Aborts report :&#10;- E3 &#10;- Tracers&#10;Created Counters report :">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ControlPanel/ControlPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/ControlPanel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControlPanel/js/ControlPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/js/ControlPanel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ControlPanel/js/Management/UsersManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/js/Management/UsersManagement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControlPanel/style/control_panel.css" beforeDir="false" afterPath="$PROJECT_DIR$/ControlPanel/style/control_panel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Network/MockNetworkAdapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Network/MockNetworkAdapter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/Counters/Counters.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Counters/Counters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/Counters/js/Counters.js" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Counters/js/Counters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/Counters/style/counters.css" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/Counters/style/counters.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/ChartBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/ChartBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/TableBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/TableBuilder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Utils/Utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/Utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +36,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="22I4ND8aiyS1PUSXvrXNj8z7vvz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -62,13 +56,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\Reports\Config\JSON" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\Network" />
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\styles" />
       <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tamernas\PycharmProjects\TGRFrontEnd\Reports\Config\JSON" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -100,6 +94,7 @@
       <workItem from="1646751227718" duration="32506000" />
       <workItem from="1647646171311" duration="5036000" />
       <workItem from="1647772360480" duration="1747000" />
+      <workItem from="1649191530955" duration="2011000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1639513305526</created>

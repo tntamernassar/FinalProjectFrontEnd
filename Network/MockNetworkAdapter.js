@@ -12,6 +12,7 @@ let MockDB = {
     PERMISSIONS: [
         {"Permissions_id": 1 ,"Name": "Add Admin","Permissions_description":"Allow User To Add Admin" },
         {"Permissions_id": 2 ,"Name": "Add Machine","Permissions_description":"Allow User To Add Machine" },
+        {"Permissions_id": 3 ,"Name": "View report","Permissions_description":"Allow User To View report" },
     ],
 
     USER_PERMISSIONS: [

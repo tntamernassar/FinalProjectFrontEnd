@@ -128,7 +128,7 @@ let UsersManagement = {
         });
     },
 
-    View_User_Permissions: () => {
+    view_user_permissions: () => {
         ControlPanel.resent_inner_container();
         let table_builder = TableBuilder.simple_table_builder();
         let inner_container = document.getElementById("inner_container");
@@ -163,13 +163,11 @@ let UsersManagement = {
                         let id_per = permissionsuser.filter((row) => row["user_name"] == username);
 
                         let after = id_per.map((x) => permissions.filter((row) => row["Permissions_id"] == x["Permissions_id"])[0] );
-                        console.log(after)
 
                         tabs.push(
                             {
                                 "name": name,
                                 "cont": () => {
-                                    console.log(id_per);
                                     document.getElementById(name).innerHTML="";
                                     table_builder(
                                         document.getElementById(name),
@@ -191,5 +189,296 @@ let UsersManagement = {
         });
     },
 
+    build_hash_map :(user_permissions_response) => {
+        let hashMap = {};
+
+        user_permissions_response.forEach(permission => {
+            if (!hashMap[permission["user_name"]] ){
+                hashMap[permission["user_name"]]=[]
+            }
+            hashMap[permission["user_name"]].push(permission["Permissions_id"])
+        });
+
+        return hashMap;
+
+
+    },
+
+    add_machine_management_permission: () => {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_users",
+            "department": "TGR"
+        }, (response) => {
+
+            UsersManagement.network_adapter.send({
+                "action": "get_permissions",
+                "department": "TGR"
+            }, (permissions_response) => {
+
+                UsersManagement.network_adapter.send({
+                    "action": "get_user_permissions",
+                    "department": "TGR"
+                }, (user_permissions_response) => {
+
+                    let all = response["users"];
+                    let permissions = permissions_response["permissions"];
+                    let permissionsuser = user_permissions_response["user_permissions"];
+
+                    num_Per_AddMachine=permissions.filter( x => x["Name"]=="Add Machine")[0]["Permissions_id"];
+
+                    let hashMap = UsersManagement.build_hash_map(permissionsuser)
+
+                    not_have_permission = []
+                    for (const [key, value] of Object.entries(hashMap)) {
+                        if (!value.includes(num_Per_AddMachine)){
+                            not_have_permission.push(key);
+                        }
+                    };
+
+                    /** response format : { users: list of users } **/
+
+
+                    let users = not_have_permission.map(x => all.filter(user => user["username"]==x));
+                    let names = users.map(user => user.map(x=> x["first_name"] + " " + x["last_name"] + " - " + x["username"]));
+
+                    let new_user = [];
+
+                    ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
+                        let username = users[i]["username"];
+                        if (checked) {
+                            new_user.push(username);
+                        } else {
+                            new_user = new_user.filter(a => a !== username);
+                        }
+                    }, () => {
+                        if (new_user.length == 0) {
+                            alert("Please choose at least one user");
+                        } else {
+                            UsersManagement.network_adapter.send({
+                                "action": "Add_machine_management_Permission",
+                                "usernames": new_user
+                            }, (response) => {
+                                // TODO: Display success/fail message
+                                console.log("Add machine Permission response : ", JSON.stringify(response));
+                            });
+                        }
+                    });
+                });
+            });
+        });
+    },
+
+    remove_machine_management_permission :() => {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_users",
+            "department": "TGR"
+        }, (response) => {
+
+            UsersManagement.network_adapter.send({
+                "action": "get_permissions",
+                "department": "TGR"
+            }, (permissions_response) => {
+
+                UsersManagement.network_adapter.send({
+                    "action": "get_user_permissions",
+                    "department": "TGR"
+                }, (user_permissions_response) => {
+
+                    let all = response["users"];
+                    let permissions = permissions_response["permissions"];
+                    let permissionsuser = user_permissions_response["user_permissions"];
+
+                    num_Per_AddMachine=permissions.filter( x => x["Name"]=="Add Machine")[0]["Permissions_id"];
+
+                    let hashMap = UsersManagement.build_hash_map(permissionsuser)
+
+                    not_have_permission = []
+                    for (const [key, value] of Object.entries(hashMap)) {
+                        if (value.includes(num_Per_AddMachine)){
+                            not_have_permission.push(key);
+                        }
+                    };
+
+                    /** response format : { users: list of users } **/
+
+
+                    let users = not_have_permission.map(x => all.filter(user => user["username"]==x));
+                    let names = users.map(user => user.map(x=> x["first_name"] + " " + x["last_name"] + " - " + x["username"]));
+
+                    let new_user = [];
+
+                    ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
+                        let username = users[i]["username"];
+                        if (checked) {
+                            new_user.push(username);
+                        } else {
+                            new_user = new_user.filter(a => a !== username);
+                        }
+                    }, () => {
+                        if (new_user.length == 0) {
+                            alert("Please choose at least one user");
+                        } else {
+                            UsersManagement.network_adapter.send({
+                                "action": "Add_machine_management_Permission",
+                                "usernames": new_user
+                            }, (response) => {
+                                // TODO: Display success/fail message
+                                console.log("remove machine Permission response : ", JSON.stringify(response));
+                            });
+                        }
+                    });
+                });
+            });
+        });
+    },
+
+    add_view_report_permission: () => {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_users",
+            "department": "TGR"
+        }, (response) => {
+
+            UsersManagement.network_adapter.send({
+                "action": "get_permissions",
+                "department": "TGR"
+            }, (permissions_response) => {
+
+                UsersManagement.network_adapter.send({
+                    "action": "get_user_permissions",
+                    "department": "TGR"
+                }, (user_permissions_response) => {
+
+                    let all = response["users"];
+                    let permissions = permissions_response["permissions"];
+                    let permissionsuser = user_permissions_response["user_permissions"];
+
+                    num_Per_AddMachine=permissions.filter( x => x["Name"]=="View report")[0]["Permissions_id"];
+
+                    let hashMap = UsersManagement.build_hash_map(permissionsuser)
+
+                    not_have_permission = []
+                    for (const [key, value] of Object.entries(hashMap)) {
+                        if (!value.includes(num_Per_AddMachine)){
+                            not_have_permission.push(key);
+                        }
+                    };
+
+                    /** response format : { users: list of users } **/
+
+
+                    let users = not_have_permission.map(x => all.filter(user => user["username"]==x));
+                    let names = users.map(user => user.map(x=> x["first_name"] + " " + x["last_name"] + " - " + x["username"]));
+
+                    let new_user = [];
+
+                    ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
+                        let username = users[i]["username"];
+                        if (checked) {
+                            new_user.push(username);
+                        } else {
+                            new_user = new_user.filter(a => a !== username);
+                        }
+                    }, () => {
+                        if (new_user.length == 0) {
+                            alert("Please choose at least one user");
+                        } else {
+                            UsersManagement.network_adapter.send({
+                                "action": "Add_machine_management_Permission",
+                                "usernames": new_user
+                            }, (response) => {
+                                // TODO: Display success/fail message
+                                console.log("Add View Report Permission response : ", JSON.stringify(response));
+                            });
+                        }
+                    });
+                });
+            });
+        });
+    },
+
+    remove_view_report_permission: () => {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_users",
+            "department": "TGR"
+        }, (response) => {
+
+            UsersManagement.network_adapter.send({
+                "action": "get_permissions",
+                "department": "TGR"
+            }, (permissions_response) => {
+
+                UsersManagement.network_adapter.send({
+                    "action": "get_user_permissions",
+                    "department": "TGR"
+                }, (user_permissions_response) => {
+
+                    let all = response["users"];
+                    let permissions = permissions_response["permissions"];
+                    let permissionsuser = user_permissions_response["user_permissions"];
+
+                    num_Per_AddMachine = permissions.filter(x => x["Name"] == "View report")[0]["Permissions_id"];
+
+                    let hashMap = UsersManagement.build_hash_map(permissionsuser)
+
+                    not_have_permission = []
+                    for (const [key, value] of Object.entries(hashMap)) {
+                        if (value.includes(num_Per_AddMachine)) {
+                            not_have_permission.push(key);
+                        }
+                    }
+                    ;
+
+                    /** response format : { users: list of users } **/
+
+
+                    let users = not_have_permission.map(x => all.filter(user => user["username"] == x));
+                    let names = users.map(user => user.map(x => x["first_name"] + " " + x["last_name"] + " - " + x["username"]));
+
+                    let new_user = [];
+
+                    ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
+                        let username = users[i]["username"];
+                        if (checked) {
+                            new_user.push(username);
+                        } else {
+                            new_user = new_user.filter(a => a !== username);
+                        }
+                    }, () => {
+                        if (new_user.length == 0) {
+                            alert("Please choose at least one user");
+                        } else {
+                            UsersManagement.network_adapter.send({
+                                "action": "Add_machine_management_Permission",
+                                "usernames": new_user
+                            }, (response) => {
+                                // TODO: Display success/fail message
+                                console.log("Remove View Report Permission response : ", JSON.stringify(response));
+                            });
+                        }
+                    });
+                });
+            });
+        });
+    },
 
 };

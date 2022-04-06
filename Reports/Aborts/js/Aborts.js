@@ -3,17 +3,16 @@ const E3 = {
     draw_ceid_summary_div: (ceid, ceid_parent, e3_data, summary_status, days_back)=>{
         let summary_div = document.createElement("div");
         summary_div.className = "report_card e3_summary_div";
-        summary_div.id = "e3_summary_div_"+days_back+"_days_"+summary_status;
+        summary_div.id = ceid+"_e3_summary_div_"+days_back+"_days_"+summary_status;
         ceid_parent.appendChild(summary_div);
 
         let relevant_data = e3_data.filter((row)=>
-            row["CEID"] === ceid && row["SUMMARY_STATUS"] === summary_status && Utils.str_date_diff(row["LOT_RUN_START_DATE"], new Date()) <= days_back * 24 * 60
+            row["CEID"] === ceid && row["STATUS"] === summary_status && Utils.str_date_diff(row["RUN_START_TIME"], new Date()) <= days_back * 24 * 60
         );
-
         if (relevant_data.length == 0){
             return;
         }
-        let entities = Utils.distinct(relevant_data.map((row)=>row["E3_ENTITY"]));
+        let entities = Utils.distinct(relevant_data.map((row)=>row["SUBENTITY"]));
         let variables = Utils.distinct(relevant_data.map((row)=>row["VARIABLE"]));
 
         let stacked_bar_chart_builder = ChartBuilder.stacked_bar_chart_builder();
@@ -23,7 +22,7 @@ const E3 = {
             entities,
             variables.map((variable)=>
                 stacked_bar_chart_builder.make_bar(variable,
-                    entities.map((entity)=>relevant_data.filter((row)=>row["E3_ENTITY"] == entity && row["VARIABLE"] == variable).length),
+                    entities.map((entity)=>relevant_data.filter((row)=>row["SUBENTITY"] == entity && row["VARIABLE"] == variable).length),
                     "Variable"
                 )
             )
@@ -50,8 +49,10 @@ const E3 = {
                     ceid_div.innerHTML = '';
                     E3.draw_ceid_summary_div(ceid, ceid_div, e3_data, "WARNING", 1);
                     E3.draw_ceid_summary_div(ceid, ceid_div, e3_data, "WARNING", 7);
+                    E3.draw_ceid_summary_div(ceid, ceid_div, e3_data, "WARNING", 30);
                     E3.draw_ceid_summary_div(ceid, ceid_div, e3_data, "CRITICAL", 1);
                     E3.draw_ceid_summary_div(ceid, ceid_div, e3_data, "CRITICAL", 7);
+                    E3.draw_ceid_summary_div(ceid, ceid_div, e3_data, "CRITICAL", 30);
                 }
             }
         }), e3_content);
@@ -151,21 +152,38 @@ const Aborts = {
     data: {
         e3: undefined,
         tracers: undefined,
-        alerts: undefined,
     },
 
     errors: (es)=>{
         es.filter((e)=>e).forEach(console.error);
     },
 
-    onData:(e3, tracers, alerts)=>{
+    onData:(e3, tracers)=>{
         Aborts.data.e3 = e3;
         Aborts.data.tracers = tracers;
-        Aborts.data.alerts = alerts;
-
         console.log(Aborts.data);
+    },
 
-        document.getElementById("tracers_tablink").click();
+    build_tabs: ()=>{
+        let tabs_content = document.getElementById("tabs_content");
+        let tabs = document.getElementById("tabs");
+
+        Utils.build_tabs(tabs, [
+            {
+                "name": "E3",
+                "content_classname": "tabcontent",
+                "cont": ()=>{
+                    E3.draw();
+                }
+            },
+            {
+                "name": "Tracers",
+                "content_classname": "tabcontent",
+                "cont": ()=>{
+                    Tracers.draw();
+                }
+            }
+        ], tabs_content);
     },
 
     request_data: ()=>{
@@ -178,18 +196,14 @@ const Aborts = {
                 "action": "get_report",
                 "report": "tracers"
             }, (tracers_response)=>{
+                document.getElementById("loading").style.display = "none";
+                Aborts.build_tabs();
                 let tracers = tracers_response["data"];
-                NetworkAdapter.send({
-                    "action": "get_report",
-                    "report": "tracers" //TODO: Replace with "alerts"
-                }, (alerts_response)=>{
-                    let alerts = alerts_response["data"];
-                    if (e3_response["success"] && tracers_response["success"] && alerts_response["success"]){
-                        Aborts.onData(e3, tracers, alerts);
-                    }else{
-                        Aborts.errors([e3_response["error"], tracers_response["error"], alerts_response["error"]]);
-                    }
-                });
+                if (e3_response["success"] && tracers_response["success"]){
+                    Aborts.onData(e3, tracers);
+                }else{
+                    Aborts.errors([e3_response["error"], tracers_response["error"]]);
+                }
             });
         });
     },

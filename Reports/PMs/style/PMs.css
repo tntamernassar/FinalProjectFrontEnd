@@ -1,0 +1,18 @@
+.pms_summary_table{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.shift_distribution_pie, .shift_g2g_bar{
+    width: 30%;
+    float: left;
+    margin: 1%;
+}
+
+.shift_g2g_serie{
+    width: 90%;
+    float: left;
+    margin-left: 3%;
+}

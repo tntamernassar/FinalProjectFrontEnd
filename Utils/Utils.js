@@ -29,7 +29,7 @@ const Utils = {
             button.innerHTML = name;
             button.className = "tablinks";
             button.onclick = (event)=>{
-                Utils.openTab(event, name, parent_of_content, cont);
+                Utils.openTab(event, name, content_classname, cont);
             };
             div.appendChild(button);
         });
@@ -53,7 +53,7 @@ const Utils = {
         document.getElementById(tab_name).style.display = "block";
         evt.currentTarget.className += " active";
         if (cont) {
-            cont();
+            cont(document.getElementById(tab_name));
         }
     },
 

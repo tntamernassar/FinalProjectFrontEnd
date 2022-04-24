@@ -4,7 +4,6 @@ const E3 = {
         let summary_div = document.createElement("div");
         summary_div.className = "report_card e3_summary_div";
         summary_div.id = ceid+"_e3_summary_div_"+days_back+"_days_"+summary_status;
-        ceid_parent.appendChild(summary_div);
 
         let relevant_data = e3_data.filter((row)=>
             row["CEID"] === ceid && row["STATUS"] === summary_status && Utils.str_date_diff(row["RUN_START_TIME"], new Date()) <= days_back * 24 * 60
@@ -12,13 +11,15 @@ const E3 = {
         if (relevant_data.length == 0){
             return;
         }
+        ceid_parent.appendChild(summary_div);
+
         let entities = Utils.distinct(relevant_data.map((row)=>row["SUBENTITY"]));
         let variables = Utils.distinct(relevant_data.map((row)=>row["VARIABLE"]));
 
         let stacked_bar_chart_builder = ChartBuilder.stacked_bar_chart_builder();
         stacked_bar_chart_builder.builder(summary_div.id,
             ceid + " Summary for the last " + days_back + " days (" + summary_status + ")",
-            "Aborts",
+            "Aborts #",
             entities,
             variables.map((variable)=>
                 stacked_bar_chart_builder.make_bar(variable,

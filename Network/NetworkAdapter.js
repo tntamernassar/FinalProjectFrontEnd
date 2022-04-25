@@ -22,7 +22,7 @@ let NetworkAdapter = {
             request["id"] = id;
         }
         NetworkAdapter.requests[id] = response_cb;
-        this.websocket.send("TGR " + JSON.stringify(request));
+        this.websocket.send(JSON.stringify(request));
     },
 
 

@@ -12,30 +12,27 @@
     <link rel="stylesheet" type="text/css" href="../../styles/styles.css"/>
     <link rel="stylesheet" type="text/css" href="../../styles/tabs.css"/>
     <link rel="stylesheet" type="text/css" href="../../styles/simple_table.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/header.css"/>
 
     <link rel="stylesheet" type="text/css" href="style/aborts.css"/>
     <script src="js/Aborts.js"></script>
 </head>
 <body>
 
-
-<div class="tab">
-    <button class="tablinks" onclick="Utils.openTab(event, 'E3', 'tabcontent', E3.draw)">E3</button>
-    <button id="tracers_tablink" class="tablinks" onclick="Utils.openTab(event, 'Tracers', 'tabcontent', Tracers.draw)">Tracers</button>
-    <button class="tablinks" onclick="Utils.openTab(event, 'Alerts', 'tabcontent')">Alerts</button>
+<div class="header">
+    <div class="username_label_holder">
+        <span id="username_label">Tamer Nassar</span>
+    </div>
+    <div class="flatname_label_holder">
+        <span>TGR Aborts</span>
+    </div>
 </div>
 
-<div id="E3" class="tabcontent">
+<div id="tabs" class="tab"></div>
 
-</div>
+<div id="tabs_content"></div>
+<center id="loading"><img src="../../images/loading.gif"/></center>
 
-<div id="Tracers" class="tabcontent">
-
-</div>
-
-<div id="Alerts" class="tabcontent">
-    Alerts
-</div>
 
 <script>
     Aborts.init();

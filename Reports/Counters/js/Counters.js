@@ -53,7 +53,7 @@ let Counters = {
             checklist,
             "Days",
             limit,
-            "UTP Time",
+            "Time Since Last PM",
             counters
         );
 

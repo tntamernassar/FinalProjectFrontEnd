@@ -59,9 +59,48 @@ let ChartBuilder = {
 
     },
 
+    time_series_chart_builder: ()=>{
+        let builder =  (parent_id, title, y_axis_title, series)=>{
+            Highcharts.chart(parent_id, {
+                chart: {
+                    type: 'spline',
+                },
+                credits:{
+                    enabled:false
+                },
+                title: {
+                    text: title
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: y_axis_title
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal'
+                    }
+                },
+                series:  series.map(serie => {
+                   return {
+                       "name": serie.name,
+                       "data": serie.serie
+                   }
+                })
+            });
+        }
+
+        return {
+            builder: builder,
+            make_serie: (name, serie)=>{ return {"name": name, "serie": serie} },
+            make_point: (date, value)=> [date, value]
+        }
+
+    },
+
     stacked_bar_chart_builder: ()=>{
         let builder = (parent_id, title, y_axis_title, categories, data)=>{
-            console.log(data)
             Highcharts.chart(parent_id, {
 
                 chart: {
@@ -155,6 +194,8 @@ let ChartBuilder = {
         }
 
     },
+
+
 
     /**
      * from https://www.highcharts.com/docs/chart-and-series-types/organization-chart

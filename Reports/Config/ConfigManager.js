@@ -1,5 +1,5 @@
 const SHARED_DIR = "http://isshweb.intel.com/isAnalysis$/1274_MAODATA/Config/DryEtch/LEAD/XCL/XCL_Dots_Data/Reports/AnalysisWorkFlow/FrontEnd/TGR/Reports/Config/JSON/";
-const LOCAL_DIR = "http://localhost:63343/TGRFrontEnd/Reports/Config/JSON/";
+const LOCAL_DIR = "../Config/JSON/";
 
 let ConfigManager = {
 

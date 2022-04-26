@@ -22,6 +22,13 @@ let MockDB = {
         {"Permissions_id": 2 ,"user_name":"aboomar" },
     ],
 
+    Machines: [
+        {"name": "t1" , "state": "UP" , "attributes":{"a": 1 ,"b": 2 }},
+        {"name": "t2" , "state": "PM" , "attributes":{"a": 21 ,"b": 2 }},
+        {"name": "t3" , "state": "UP" , "attributes":{"a": 1344 ,"b": 232 }},
+        {"name": "t4" , "state": "DOWN" , "attributes":{"a": 32 ,"b": 24 }},
+    ],
+
 }
 
 let MockNetworkAdapter = {
@@ -32,6 +39,7 @@ let MockNetworkAdapter = {
         "remove_admin": {"success": true},
         "get_permissions": {"permissions": MockDB.PERMISSIONS, "success": true},
         "get_user_permissions": {"user_permissions": MockDB.USER_PERMISSIONS, "success": true},
+        "get_machines": {"machines": MockDB.Machines, "success": true},
 
     },
 

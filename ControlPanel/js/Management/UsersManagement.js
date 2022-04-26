@@ -229,16 +229,16 @@ let UsersManagement = {
                     let permissions = permissions_response["permissions"];
                     let permissionsuser = user_permissions_response["user_permissions"];
 
-                    num_Per_AddMachine=permissions.filter( x => x["Name"]=="Add Machine")[0]["Permissions_id"];
+                    let num_Per_AddMachine=permissions.filter( x => x["Name"]=="Add Machine")[0]["Permissions_id"];
 
                     let hashMap = UsersManagement.build_hash_map(permissionsuser)
 
-                    not_have_permission = []
+                    let not_have_permission = []
                     for (const [key, value] of Object.entries(hashMap)) {
                         if (!value.includes(num_Per_AddMachine)){
                             not_have_permission.push(key);
                         }
-                    };
+                    }
 
                     /** response format : { users: list of users } **/
 
@@ -298,11 +298,11 @@ let UsersManagement = {
                     let permissions = permissions_response["permissions"];
                     let permissionsuser = user_permissions_response["user_permissions"];
 
-                    num_Per_AddMachine=permissions.filter( x => x["Name"]=="Add Machine")[0]["Permissions_id"];
+                    let num_Per_AddMachine=permissions.filter( x => x["Name"]=="Add Machine")[0]["Permissions_id"];
 
                     let hashMap = UsersManagement.build_hash_map(permissionsuser)
 
-                    not_have_permission = []
+                    let not_have_permission = []
                     for (const [key, value] of Object.entries(hashMap)) {
                         if (value.includes(num_Per_AddMachine)){
                             not_have_permission.push(key);
@@ -367,16 +367,16 @@ let UsersManagement = {
                     let permissions = permissions_response["permissions"];
                     let permissionsuser = user_permissions_response["user_permissions"];
 
-                    num_Per_AddMachine=permissions.filter( x => x["Name"]=="View report")[0]["Permissions_id"];
+                    let num_Per_AddMachine=permissions.filter( x => x["Name"]=="View report")[0]["Permissions_id"];
 
                     let hashMap = UsersManagement.build_hash_map(permissionsuser)
 
-                    not_have_permission = []
+                    let not_have_permission = []
                     for (const [key, value] of Object.entries(hashMap)) {
                         if (!value.includes(num_Per_AddMachine)){
                             not_have_permission.push(key);
                         }
-                    };
+                    }
 
                     /** response format : { users: list of users } **/
 
@@ -436,17 +436,16 @@ let UsersManagement = {
                     let permissions = permissions_response["permissions"];
                     let permissionsuser = user_permissions_response["user_permissions"];
 
-                    num_Per_AddMachine = permissions.filter(x => x["Name"] == "View report")[0]["Permissions_id"];
+                    let num_Per_AddMachine = permissions.filter(x => x["Name"] == "View report")[0]["Permissions_id"];
 
                     let hashMap = UsersManagement.build_hash_map(permissionsuser)
 
-                    not_have_permission = []
+                    let not_have_permission = []
                     for (const [key, value] of Object.entries(hashMap)) {
                         if (value.includes(num_Per_AddMachine)) {
                             not_have_permission.push(key);
                         }
                     }
-                    ;
 
                     /** response format : { users: list of users } **/
 
@@ -479,6 +478,31 @@ let UsersManagement = {
                 });
             });
         });
+    },
+
+    view_machines: () => {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let overview_container_div = document.createElement("div");
+        overview_container_div.id = "overview_container";
+        let machines_container_div = document.createElement("div");
+        machines_container_div.id = "machines_container";
+        let machine_loading_div = document.createElement("div");
+        machine_loading_div.id = "machine_loading";
+
+        inner_container.appendChild(overview_container_div);
+        inner_container.appendChild(machines_container_div);
+        inner_container.appendChild(machine_loading_div);
+
+        UsersManagement.network_adapter.send({
+            "action": "get_machines",
+            "department": "TGR"
+        }, (response) => {
+
+            Dashboard.display_machines(response["machines"]);
+
+        })
+
     },
 
 };

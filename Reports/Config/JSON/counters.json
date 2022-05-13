@@ -1,21 +1,21 @@
 {
   "groups": [{
     "name": "CleanPM",
-    "checklists": ["TGR1274R1LChCleanArmMovePM", "TGR1274R2LChCleanArmMovePM", "TGR1274R1UChCleanArmMovePM", "TGR1274R2UChCleanArmMovePM"]
+    "checklists": ["BGU1274R1LChCleanArmMovePM", "BGU1274R2LChCleanArmMovePM", "BGU1274R1UChCleanArmMovePM", "BGU1274R2UChCleanArmMovePM"]
   },{
     "name": "Filters",
-    "checklists": ["TGRchPROMfilterChangePM", "TGRIPAFilterChangePM", "TGRXMCABFilterChangePM",
-                  "TGRch74DIWFilterChangePM", "TGRch74NH4OHFilterChangePM", "TGRcxDHF1FilterChangePM",
-                  "TGRcxDIWFilterChangePM", "TGRcxDHF2FilterChangePM", "TGRTRCDTDCABFilterChangePM",
-                  "TGRTRCnDTDCABFilterChangePM", "TGRCAB4NH4OHFilterChangePM", "TGRCUCBDIWFilterChangePM",
-                  "TGR1274TRC70CfilterchangePM", "TGRcjCAB1JNTFilterChangePM", "TGRcjCAB2JNTFilterChangePM", "TGRcjDIWFilterChangePM"
+    "checklists": ["BGUchPROMfilterChangePM", "BGUIPAFilterChangePM", "BGUXMCABFilterChangePM",
+                  "BGUch74DIWFilterChangePM", "BGUch74NH4OHFilterChangePM", "BGUcxDHF1FilterChangePM",
+                  "BGUcxDIWFilterChangePM", "BGUcxDHF2FilterChangePM", "BGUTRCDTDCABFilterChangePM",
+                  "BGUTRCnDTDCABFilterChangePM", "BGUCAB4NH4OHFilterChangePM", "BGUCUCBDIWFilterChangePM",
+                  "BGU1274TRC70CfilterchangePM", "BGUcjCAB1JNTFilterChangePM", "BGUcjCAB2JNTFilterChangePM", "BGUcjDIWFilterChangePM"
                   ]
   },{
     "name": "Super Clean",
-    "checklists": ["TGRG1LChamberSuprecleanPM", "TGRG2LChamberSupercleanPM", "TGRG1UChamberSupercleanPM", "TGRG2UChamberSupercleanPM"]
+    "checklists": ["BGUG1LChamberSuprecleanPM", "BGUG2LChamberSupercleanPM", "BGUG1UChamberSupercleanPM", "BGUG2UChamberSupercleanPM"]
   },{
     "name": "Pumps",
-    "checklists": ["TGRIPAPumpChangePM", "TGRch74NH4OHpumpchangePM", "TGRAnnDHF1PumpChangeBackPM",
-                   "TGRAnnDHF1PumpChangeFrontPM", "TGRAnnDHF2PumpChangeBackPM", "TGRAnnDHF2PumpChangeFrontPM"]
+    "checklists": ["BGUIPAPumpChangePM", "BGUch74NH4OHpumpchangePM", "BGUAnnDHF1PumpChangeBackPM",
+                   "BGUAnnDHF1PumpChangeFrontPM", "BGUAnnDHF2PumpChangeBackPM", "BGUAnnDHF2PumpChangeFrontPM"]
   }]
 }

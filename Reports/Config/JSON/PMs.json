@@ -1,7 +1,7 @@
 {
   "checklists_titles": {
-    "TGRchPROMfilterChangePM": "PROM Filter",
-    "TGRXMCABFilterChangePM": "CAB Filter",
-    "TGRIPAFilterChangePM": "IPA Filter"
+    "BGUchPROMfilterChangePM": "PROM Filter",
+    "BGUXMCABFilterChangePM": "CAB Filter",
+    "BGUIPAFilterChangePM": "IPA Filter"
   }
 }

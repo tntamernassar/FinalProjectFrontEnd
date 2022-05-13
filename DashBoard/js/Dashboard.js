@@ -85,7 +85,7 @@ let Dashboard = {
             console.log("connected");
             NetworkAdapter.send({
                 "action": "get_machines",
-                "department": "TGR"
+                "department": "BGU"
             }, (response)=>{
                 console.log(response);
                 Dashboard.display_machines(response["machines"]);

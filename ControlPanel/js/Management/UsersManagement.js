@@ -1,7 +1,7 @@
 
 let UsersManagement = {
 
-    network_adapter: MockNetworkAdapter,
+    network_adapter: NetworkAdapter,
 
     view_users: () => {
         ControlPanel.resent_inner_container();
@@ -14,8 +14,9 @@ let UsersManagement = {
 
         UsersManagement.network_adapter.send({
             "action": "get_users",
-            "department": "TGR"
+            "department": "BGU"
         }, (response)=>{
+
             /** response format : { users: list of users } **/
             let nodes = [], links = [], levels = [ organization_chart_builder.make_level(0, '#980104') ];
             let all = response["users"];
@@ -44,8 +45,9 @@ let UsersManagement = {
                 });
             });
 
-            organization_chart_builder.builder(chart_div.id, "TGR Users", nodes, links, levels);
+            organization_chart_builder.builder(chart_div.id, "BGU Users", nodes, links, levels);
         });
+
     },
 
     add_admin: () => {
@@ -56,7 +58,7 @@ let UsersManagement = {
         inner_container.appendChild(checkboxes_div);
         UsersManagement.network_adapter.send({
             "action": "get_users",
-            "department": "TGR"
+            "department": "BGU"
         }, (response) => {
             /** response format : { users: list of users } **/
             let all = response["users"];
@@ -80,8 +82,7 @@ let UsersManagement = {
                         "usernames": new_admins
                     }, (response) => {
                         // TODO: Display success/fail message
-                        console.log("Add Admin response : ", JSON.stringify(response));
-                        UsersManagement.add_admin();
+                        alert("Success !");
                     });
                 }
             });
@@ -96,7 +97,7 @@ let UsersManagement = {
         inner_container.appendChild(checkboxes_div);
         UsersManagement.network_adapter.send({
             "action": "get_users",
-            "department": "TGR"
+            "department": "BGU"
         }, (response) => {
             /** response format : { users: list of users } **/
             let all = response["users"];
@@ -140,15 +141,15 @@ let UsersManagement = {
 
         UsersManagement.network_adapter.send({
             "action": "get_users",
-            "department": "TGR"
+            "department": "BGU"
         }, (user_response) => {
             UsersManagement.network_adapter.send({
                 "action": "get_permissions",
-                "department": "TGR"
+                "department": "BGU"
             }, (permissions_response) => {
                 UsersManagement.network_adapter.send({
                     "action": "get_user_permissions",
-                    "department": "TGR"
+                    "department": "BGU"
                 }, (user_permissions_response) => {
 
                     let users = user_response["users"];
@@ -212,17 +213,17 @@ let UsersManagement = {
         inner_container.appendChild(checkboxes_div);
         UsersManagement.network_adapter.send({
             "action": "get_users",
-            "department": "TGR"
+            "department": "BGU"
         }, (response) => {
 
             UsersManagement.network_adapter.send({
                 "action": "get_permissions",
-                "department": "TGR"
+                "department": "BGU"
             }, (permissions_response) => {
 
                 UsersManagement.network_adapter.send({
                     "action": "get_user_permissions",
-                    "department": "TGR"
+                    "department": "BGU"
                 }, (user_permissions_response) => {
 
                     let all = response["users"];
@@ -281,17 +282,17 @@ let UsersManagement = {
         inner_container.appendChild(checkboxes_div);
         UsersManagement.network_adapter.send({
             "action": "get_users",
-            "department": "TGR"
+            "department": "BGU"
         }, (response) => {
 
             UsersManagement.network_adapter.send({
                 "action": "get_permissions",
-                "department": "TGR"
+                "department": "BGU"
             }, (permissions_response) => {
 
                 UsersManagement.network_adapter.send({
                     "action": "get_user_permissions",
-                    "department": "TGR"
+                    "department": "BGU"
                 }, (user_permissions_response) => {
 
                     let all = response["users"];
@@ -350,17 +351,17 @@ let UsersManagement = {
         inner_container.appendChild(checkboxes_div);
         UsersManagement.network_adapter.send({
             "action": "get_users",
-            "department": "TGR"
+            "department": "BGU"
         }, (response) => {
 
             UsersManagement.network_adapter.send({
                 "action": "get_permissions",
-                "department": "TGR"
+                "department": "BGU"
             }, (permissions_response) => {
 
                 UsersManagement.network_adapter.send({
                     "action": "get_user_permissions",
-                    "department": "TGR"
+                    "department": "BGU"
                 }, (user_permissions_response) => {
 
                     let all = response["users"];
@@ -419,17 +420,17 @@ let UsersManagement = {
         inner_container.appendChild(checkboxes_div);
         UsersManagement.network_adapter.send({
             "action": "get_users",
-            "department": "TGR"
+            "department": "BGU"
         }, (response) => {
 
             UsersManagement.network_adapter.send({
                 "action": "get_permissions",
-                "department": "TGR"
+                "department": "BGU"
             }, (permissions_response) => {
 
                 UsersManagement.network_adapter.send({
                     "action": "get_user_permissions",
-                    "department": "TGR"
+                    "department": "BGU"
                 }, (user_permissions_response) => {
 
                     let all = response["users"];
@@ -496,7 +497,7 @@ let UsersManagement = {
 
         UsersManagement.network_adapter.send({
             "action": "get_machines",
-            "department": "TGR"
+            "department": "BGU"
         }, (response) => {
 
             Dashboard.display_machines(response["machines"]);

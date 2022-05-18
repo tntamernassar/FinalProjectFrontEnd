@@ -22,6 +22,8 @@ let NetworkAdapter = {
             request["id"] = id;
         }
         NetworkAdapter.requests[id] = response_cb;
+        console.log("res",response_cb);
+
         this.websocket.send(JSON.stringify(request));
     },
 

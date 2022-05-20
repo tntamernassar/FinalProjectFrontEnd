@@ -83,6 +83,7 @@ let UsersManagement = {
                     }, (response) => {
                         // TODO: Display success/fail message
                         alert("Success !");
+                        UsersManagement.add_admin();
                     });
                 }
             });
@@ -156,7 +157,6 @@ let UsersManagement = {
                     let permissions = permissions_response["permissions"];
                     let permissionsuser = user_permissions_response["user_permissions"];
 
-
                     let tabs = [];
                     users.forEach(user => {
                         let name = user["first_name"] + " " + user["last_name"];
@@ -173,7 +173,7 @@ let UsersManagement = {
                                     table_builder(
                                         document.getElementById(name),
                                         ["Permission ID", "description","name"],
-                                        ["Permissions_id", "Permissions_description","Name"],
+                                        ["Permissions_id", "Permission_description","Name"],
                                         after,
                                         "permissions_table",
                                         (r) => {
@@ -250,7 +250,8 @@ let UsersManagement = {
                     let new_user = [];
 
                     ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
-                        let username = users[i]["username"];
+                        let username = users[i][0]["username"];
+
                         if (checked) {
                             new_user.push(username);
                         } else {
@@ -262,9 +263,11 @@ let UsersManagement = {
                         } else {
                             UsersManagement.network_adapter.send({
                                 "action": "Add_machine_management_Permission",
-                                "usernames": new_user
+                                "usernames": new_user,
+                                "num_Per" : num_Per_AddMachine
                             }, (response) => {
                                 // TODO: Display success/fail message
+                                UsersManagement.add_machine_management_permission();
                                 console.log("Add machine Permission response : ", JSON.stringify(response));
                             });
                         }
@@ -319,7 +322,7 @@ let UsersManagement = {
                     let new_user = [];
 
                     ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
-                        let username = users[i]["username"];
+                        let username = users[i][0]["username"];
                         if (checked) {
                             new_user.push(username);
                         } else {
@@ -330,9 +333,11 @@ let UsersManagement = {
                             alert("Please choose at least one user");
                         } else {
                             UsersManagement.network_adapter.send({
-                                "action": "Add_machine_management_Permission",
-                                "usernames": new_user
+                                "action": "remove_machine_management_permission",
+                                "usernames": new_user,
+                                "num_Per" : num_Per_AddMachine
                             }, (response) => {
+                                UsersManagement.remove_machine_management_permission();
                                 // TODO: Display success/fail message
                                 console.log("remove machine Permission response : ", JSON.stringify(response));
                             });
@@ -388,7 +393,7 @@ let UsersManagement = {
                     let new_user = [];
 
                     ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
-                        let username = users[i]["username"];
+                        let username = users[i][0]["username"];
                         if (checked) {
                             new_user.push(username);
                         } else {
@@ -399,10 +404,12 @@ let UsersManagement = {
                             alert("Please choose at least one user");
                         } else {
                             UsersManagement.network_adapter.send({
-                                "action": "Add_machine_management_Permission",
-                                "usernames": new_user
+                                "action": "add_view_report_permission",
+                                "usernames": new_user,
+                                "num_Per" : num_Per_AddMachine
                             }, (response) => {
                                 // TODO: Display success/fail message
+                                UsersManagement.add_view_report_permission();
                                 console.log("Add View Report Permission response : ", JSON.stringify(response));
                             });
                         }
@@ -438,7 +445,6 @@ let UsersManagement = {
                     let permissionsuser = user_permissions_response["user_permissions"];
 
                     let num_Per_AddMachine = permissions.filter(x => x["Name"] == "View report")[0]["Permissions_id"];
-
                     let hashMap = UsersManagement.build_hash_map(permissionsuser)
 
                     let not_have_permission = []
@@ -457,7 +463,7 @@ let UsersManagement = {
                     let new_user = [];
 
                     ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
-                        let username = users[i]["username"];
+                        let username = users[i][0]["username"];
                         if (checked) {
                             new_user.push(username);
                         } else {
@@ -468,10 +474,12 @@ let UsersManagement = {
                             alert("Please choose at least one user");
                         } else {
                             UsersManagement.network_adapter.send({
-                                "action": "Add_machine_management_Permission",
-                                "usernames": new_user
+                                "action": "remove_view_report_permission",
+                                "usernames": new_user,
+                                "num_Per" : num_Per_AddMachine
                             }, (response) => {
                                 // TODO: Display success/fail message
+                                UsersManagement.remove_view_report_permission();
                                 console.log("Remove View Report Permission response : ", JSON.stringify(response));
                             });
                         }

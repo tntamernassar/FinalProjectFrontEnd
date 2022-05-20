@@ -20,8 +20,13 @@ let ControlPanel = {
     },
 
     init: ()=>{
+        NetworkAdapter.init(()=>{
+            console.log("connected");
+        }, (e)=>{
+            console.error(e);
+        });
         if (UserManager.logged_in()){
-            NetworkAdapter.init();
+
             let username = document.getElementById("username_label");
 
             let user = UserManager.getuser();

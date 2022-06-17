@@ -490,16 +490,15 @@ let UsersManagement = {
     },
 
     view_machines: () => {
+
         ControlPanel.resent_inner_container();
         let inner_container = document.getElementById("inner_container");
-
         UsersManagement.network_adapter.send({
             "action": "get_machines",
             "department": "BGU"
         }, (response) => {
+
             let machines = response["machines"];
-
-
             let machines_container = inner_container;
 
 

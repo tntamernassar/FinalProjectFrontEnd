@@ -18,6 +18,16 @@ body, html {
     overflow: auto;
 }
 
+
+.inner_container2{
+    width: 70%;
+    float: left;
+    margin: 2%;
+    overflow: auto;
+    padding: 2%;
+}
+
+
 .overview_container{
     width: 90%;
     margin-left: 5%;
@@ -58,6 +68,8 @@ body, html {
     overflow: auto;
     margin-top: 2%;
 }
+
+
 
 .machine_container{
     width: 150px;

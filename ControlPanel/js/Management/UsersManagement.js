@@ -492,25 +492,47 @@ let UsersManagement = {
     view_machines: () => {
         ControlPanel.resent_inner_container();
         let inner_container = document.getElementById("inner_container");
-        let overview_container_div = document.createElement("div");
-        overview_container_div.id = "overview_container";
-        let machines_container_div = document.createElement("div");
-        machines_container_div.id = "machines_container";
-        let machine_loading_div = document.createElement("div");
-        machine_loading_div.id = "machine_loading";
-
-        inner_container.appendChild(overview_container_div);
-        inner_container.appendChild(machines_container_div);
-        inner_container.appendChild(machine_loading_div);
 
         UsersManagement.network_adapter.send({
             "action": "get_machines",
             "department": "BGU"
         }, (response) => {
+            let machines = response["machines"];
 
-            Dashboard.display_machines(response["machines"]);
 
-        })
+            let machines_container = inner_container;
+
+
+            /** Group by parent entities **/
+            let parent_entities = Utils.distinct(machines.map(machine => machine["name"].split("_")[0]));
+            parent_entities.forEach((parent_entity)=>{
+                let children_entities = machines.filter(machine => machine["name"].indexOf(parent_entity) >= 0);
+
+                let up_children = children_entities.filter(machine => machine["state"] == 'UP');
+                let down_children = children_entities.filter(machine => machine["state"] == 'DOWN');
+                let pm_children = children_entities.filter(machine => machine["state"] == 'PM');
+
+                let parent_entity_container = document.createElement("div");
+                parent_entity_container.className = "report_card parent_entity_container";
+                parent_entity_container.innerHTML = "<b>" + parent_entity + "</b>";
+
+                let description_container = document.createElement("div");
+                description_container.className = "description_container";
+
+                description_container.innerHTML = ` 
+            <b class="state_UP">Up :  $up_children </b><br />
+            <b class="state_DOWN">Down : $down_children </b> <br />
+            <b class="state_PM">PM : $pm_children </b> <br/>
+            `.replace("$up_children", up_children.length.toString())
+                    .replace("$down_children", down_children.length.toString())
+                    .replace("$pm_children", pm_children.length.toString());
+
+                machines_container.appendChild(parent_entity_container);
+                parent_entity_container.appendChild(description_container);
+
+            });
+
+        });
 
     },
 

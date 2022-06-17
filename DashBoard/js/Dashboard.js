@@ -39,7 +39,7 @@ let Dashboard = {
     },
 
     /** TO-DO: Split machine by groups **/
-    display_machines: (machines)=>{
+      display_machines: (machines)=>{
         let overview_container = document.getElementById("overview_container");
         let machines_container = document.getElementById("machines_container");
         let machine_loading = document.getElementById("machine_loading");

@@ -7,15 +7,21 @@ let Login = {
             .toLowerCase()
             .match(
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
+            ) && email.endsWith("@intel.com");
     },
 
     request_log_in: ()=>{
         let input = document.getElementById("input");
+        let firstname=document.getElementById("fname");
+        let lastname=document.getElementById("lname");
         let next_button = document.getElementById("next");
         let email = input.value;
+        let fname=firstname.value;
+        let lname=lastname.value;
         if (Login.validate_email(email)){
-            NetworkAdapter.send({action: "request_login", email: email}, (response)=>{
+            firstname.remove();
+            lastname.remove();
+            NetworkAdapter.send({action: "request_login", email: email,firstname:fname,lastname:lname}, (response)=>{
                 if (response["success"]){
                     input.value = "";
                     input.placeholder = "Confirmation";

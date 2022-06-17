@@ -19,6 +19,8 @@ let ControlPanel = {
         inner_container.innerHTML = '';
     },
 
+
+
     init: ()=>{
         NetworkAdapter.init(()=>{
             console.log("connected");

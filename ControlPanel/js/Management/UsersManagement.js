@@ -490,6 +490,7 @@ let UsersManagement = {
     },
 
     view_machines: () => {
+
         ControlPanel.resent_inner_container();
         let inner_container = document.getElementById("inner_container");
         let overview_container_div = document.createElement("div");
@@ -502,11 +503,12 @@ let UsersManagement = {
         inner_container.appendChild(overview_container_div);
         inner_container.appendChild(machines_container_div);
         inner_container.appendChild(machine_loading_div);
-
+        console.log("reached here");
         UsersManagement.network_adapter.send({
             "action": "get_machines",
             "department": "BGU"
         }, (response) => {
+            console.log("display");
 
             Dashboard.display_machines(response["machines"]);
 

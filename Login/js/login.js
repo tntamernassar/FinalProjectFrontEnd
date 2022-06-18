@@ -12,16 +12,12 @@ let Login = {
 
     request_log_in: ()=>{
         let input = document.getElementById("input");
-        let firstname=document.getElementById("fname");
-        let lastname=document.getElementById("lname");
         let next_button = document.getElementById("next");
         let email = input.value;
-        let fname=firstname.value;
-        let lname=lastname.value;
+
         if (Login.validate_email(email)){
-            firstname.remove();
-            lastname.remove();
-            NetworkAdapter.send({action: "request_login", email: email,firstname:fname,lastname:lname}, (response)=>{
+
+            NetworkAdapter.send({action: "request_login", email: email}, (response)=>{
                 if (response["success"]){
                     input.value = "";
                     input.placeholder = "Confirmation";
@@ -35,6 +31,7 @@ let Login = {
                                 window.location = "../DashBoard/Dashboard.html"
                             }else{
                                 alert("Wrong confirmation");
+                                alert("Please enter valid email address");
                                 input.value = "";
                             }
                         });

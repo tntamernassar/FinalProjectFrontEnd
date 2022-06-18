@@ -640,4 +640,103 @@ let UsersManagement = {
 
     },
 
+    add_machine() {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_machines",
+            "department": "BGU"
+        }, (response1) => {
+
+            UsersManagement.network_adapter.send({
+                "action": "getAll_machines",
+                "department": "BGU"
+            }, (response2) => {
+
+                let database_machine = response1["machines"];
+                let All_machine = response2["machines"];
+
+                arr1 =[];
+                names = []
+                for (let i = 0; i < All_machine.length; i++) {
+                    let x = false;
+                    for (let j = 0; j< database_machine.length; j++) {
+                        if(All_machine[i]["machine"] == database_machine[j]["name"]){
+                            x = true;
+                        }
+                    }
+                    if (!x){
+                        arr1.push(All_machine[i]);
+                        names.push(All_machine[i]["machine"])
+                    }
+                }
+
+                let new_machines=[];
+
+                ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
+                      let machinename = arr1[i]["machine"];
+                    if (checked) {
+                        new_machines.push(arr1[i]);
+                    } else {
+                        new_machines = new_machines.filter(a => a !== machinename);
+                    }
+                  }, () => {
+                      if (new_machines.length == 0) {
+                          alert("Please choose at least one machine");
+                      } else {
+                          UsersManagement.network_adapter.send({
+                              "action": "add_machine",
+                              "new_machines": new_machines
+                          }, (response) => {
+                              // TODO: Display success/fail message
+                              alert("Success !");
+                              UsersManagement.add_machine();
+                          });
+                      }
+                  });
+            });
+        });
+    },
+    remove_machine() {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_machines",
+            "department": "BGU"
+        }, (response1) => {
+
+            let database_machine = response1["machines"];
+            let names = database_machine.map(x => x["name"])
+
+            let remove_machines = [];
+
+            ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
+                let machinename = database_machine[i]["name"];
+                if (checked) {
+                    remove_machines.push(database_machine[i]);
+                } else {
+                    remove_machines = remove_machines.filter(a => a !== machinename);
+                }
+            }, () => {
+                if (remove_machines.length == 0) {
+                    alert("Please choose at least one machine");
+                } else {
+                    UsersManagement.network_adapter.send({
+                        "action": "remove_machines",
+                        "remove_machines": remove_machines
+                    }, (response) => {
+                        // TODO: Display success/fail message
+                        alert("Success !");
+                        UsersManagement.remove_machine();
+                    });
+                }
+            });
+        });
+    }
 };

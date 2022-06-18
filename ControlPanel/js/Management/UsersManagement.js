@@ -130,6 +130,111 @@ let UsersManagement = {
         });
     },
 
+    add_user: () => {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        inner_container.className = "report_card login_card";
+        let h =document.createElement("H1");
+        let t = document.createTextNode("Add New User");
+        h.appendChild(t);
+        inner_container.appendChild(h);
+        let login_form =document.createElement("div");
+        login_form.className = "login_form";
+        let firstname = document.createElement("INPUT");
+        firstname.setAttribute("type", "text");
+        firstname.placeholder = "first name";
+        let lastname = document.createElement("INPUT");
+        lastname.setAttribute("type", "text");
+        lastname.placeholder = "last name";
+        let email = document.createElement("INPUT");
+        email.setAttribute("type", "text");
+        email.placeholder = "email";
+
+        inner_container.appendChild(login_form);
+        login_form.appendChild(firstname);
+        login_form.appendChild(lastname);
+        login_form.appendChild(email);
+
+
+        let save = Utils.make_button("Save");
+        save.style.float = "right";
+        save.onclick = ()=> {
+
+            let email1 = email.value;
+            let fname=firstname.value;
+            let lname=lastname.value;
+
+            if (email1.length == 0) {
+                alert("Please insert email");
+            }
+            else if (fname.length == 0) {
+                alert("Please insert first name");
+            }
+            else if (lname.length == 0) {
+                alert("Please insert last name");
+            }
+            else {
+                UsersManagement.network_adapter.send({
+                    "action": "add_user",
+                    "email": email1,
+                    "fname": fname,
+                    "lname": lname
+                }, (response) => {
+                    // TODO: Display success/fail message
+                    console.log("add user response : ", JSON.stringify(response));
+                    UsersManagement.add_user();
+                });
+            }
+        };
+        login_form.appendChild(save);
+
+
+
+
+
+    },
+
+    remove_user: () => {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_users",
+            "department": "BGU"
+        }, (response) => {
+            /** response format : { users: list of users } **/
+            let all = response["users"];
+            let names = all.map(user => user["first_name"] + " " + user["last_name"] + " - " + user["username"]);
+            let to_remove = [];
+
+            ControlPanel.create_checklist(checkboxes_div, names, (i, checked)=>{
+                let username = all[i]["username"];
+                if (checked){
+                    to_remove.push(username);
+                }else{
+                    to_remove = to_remove.filter(a => a !== username);
+                }
+            }, ()=>{
+                if (to_remove.length == 0){
+                    alert("Please choose at least one user");
+                }else {
+                    console.log(to_remove);
+                    UsersManagement.network_adapter.send({
+                        "action": "remove_user",
+                        "usernames": to_remove
+                    }, (response) => {
+                        // TODO: Display success/fail message
+                        console.log("Remove user response : ", JSON.stringify(response));
+                        UsersManagement.remove_user();
+                    });
+                }
+            });
+        });
+    },
+
+
     view_user_permissions: () => {
         ControlPanel.resent_inner_container();
         let table_builder = TableBuilder.simple_table_builder();

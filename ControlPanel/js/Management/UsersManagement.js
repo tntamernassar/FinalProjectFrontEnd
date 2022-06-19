@@ -677,7 +677,7 @@ let UsersManagement = {
                 let new_machines=[];
 
                 ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
-                      let machinename = arr1[i]["machine"];
+                      let machinename = arr1[i];
                     if (checked) {
                         new_machines.push(arr1[i]);
                     } else {
@@ -717,7 +717,7 @@ let UsersManagement = {
             let remove_machines = [];
 
             ControlPanel.create_checklist(checkboxes_div, names, (i, checked) => {
-                let machinename = database_machine[i]["name"];
+                let machinename = database_machine[i];
                 if (checked) {
                     remove_machines.push(database_machine[i]);
                 } else {
@@ -735,6 +735,158 @@ let UsersManagement = {
                         alert("Success !");
                         UsersManagement.remove_machine();
                     });
+                }
+            });
+        });
+    },
+    add_machine_attributes() {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_machines",
+            "department": "BGU"
+        }, (response1) => {
+
+            let database_machine = response1["machines"];
+            let names = database_machine.map(x => x["name"])
+
+            let list_machines = [];
+
+            ControlPanel.create_checklist2(checkboxes_div, names, (i, checked) => {
+                let machinename = database_machine[i];
+                if (checked) {
+                    list_machines.push(database_machine[i]);
+                } else {
+                    list_machines = list_machines.filter(a => a !== machinename);
+                }
+            }, () => {
+                if (list_machines.length != 1) {
+                    alert("Please choose one machine");
+                } else {
+                    UsersManagement.network_adapter.send({
+                        "action": "getAll_machines",
+                        "department": "BGU"
+                    }, (response2) => {
+                        let All_machine = response2["machines"];
+                        let machine_1 = list_machines[0];
+
+                        All_machine=All_machine.filter(x => x["machine"] === machine_1["name"]);
+
+                        let attributes_machine1 = [];
+                        for([key,value] of Object.entries(machine_1["attributes"])){
+                            attributes_machine1.push(key);
+                        }
+
+                        let arr1 = [];
+                        for (let i = 0; i < All_machine[0]["attributes"].length; i++) {
+                            let x = false;
+                            for (let j = 0; j< attributes_machine1.length; j++) {
+                                if(All_machine[0]["attributes"][i]["name"] == attributes_machine1[j]){
+                                    x = true;
+                                }
+                            }
+                            if (!x){
+                                arr1.push(All_machine[0]["attributes"][i]["name"]);
+                            }
+                        }
+
+                        let new_attributes = [];
+                        ControlPanel.resent_inner_container();
+                        let inner_container = document.getElementById("inner_container");
+                        let checkboxes_div = document.createElement("div");
+                        checkboxes_div.className = "checkboxes_div";
+                        inner_container.appendChild(checkboxes_div);
+                        ControlPanel.create_checklist(checkboxes_div, arr1, (i, checked) => {
+                            if (checked) {
+                                new_attributes.push(arr1[i]);
+                            } else {
+                                new_attributes = new_attributes.filter(a => a !== arr1[i]);
+                            }
+                        }, () => {
+                            if (new_attributes.length == 0) {
+                                alert("Please choose at least one machine");
+                            } else {
+                                UsersManagement.network_adapter.send({
+                                    "action": "add_machine_attributes",
+                                    "machine" : All_machine[0],
+                                    "new_attributes": new_attributes
+                                }, (response) => {
+                                    // TODO: Display success/fail message
+                                    alert("Success !");
+                                    UsersManagement.add_machine_attributes();
+                                });
+                            }
+                        })
+
+                    });
+                }
+            });
+        });
+
+    },
+    remove_machine_attributes() {
+        ControlPanel.resent_inner_container();
+        let inner_container = document.getElementById("inner_container");
+        let checkboxes_div = document.createElement("div");
+        checkboxes_div.className = "checkboxes_div";
+        inner_container.appendChild(checkboxes_div);
+        UsersManagement.network_adapter.send({
+            "action": "get_machines",
+            "department": "BGU"
+        }, (response1) => {
+
+            let database_machine = response1["machines"];
+            let names = database_machine.map(x => x["name"])
+
+            let list_machines = [];
+
+            ControlPanel.create_checklist2(checkboxes_div, names, (i, checked) => {
+                let machinename = database_machine[i];
+                if (checked) {
+                    list_machines.push(database_machine[i]);
+                } else {
+                    list_machines = list_machines.filter(a => a !== machinename);
+                }
+            }, () => {
+                if (list_machines.length != 1) {
+                    alert("Please choose one machine");
+                } else {
+                    console.log(list_machines[0]);
+                    let attributes_machine1 = [];
+                    for ([key, value] of Object.entries(list_machines[0]["attributes"])) {
+                        attributes_machine1.push(key);
+                    }
+
+                    ControlPanel.resent_inner_container();
+                    let inner_container = document.getElementById("inner_container");
+                    let checkboxes_div = document.createElement("div");
+                    checkboxes_div.className = "checkboxes_div";
+                    inner_container.appendChild(checkboxes_div);
+                    let remove_attributes = [];
+                    ControlPanel.create_checklist(checkboxes_div, attributes_machine1, (i, checked) => {
+                        if (checked) {
+                            remove_attributes.push(attributes_machine1[i]);
+                        } else {
+                            remove_attributes = remove_attributes.filter(a => a !== attributes_machine1[i]);
+                        }
+                    }, () => {
+                        if (remove_attributes.length == 0) {
+                            alert("Please choose at least one machine");
+                        } else {
+                            UsersManagement.network_adapter.send({
+                                "action": "remove_machine_attributes",
+                                "machine": list_machines[0],
+                                "remove_attributes": remove_attributes
+                            }, (response) => {
+                                // TODO: Display success/fail message
+                                alert("Success !");
+                                UsersManagement.remove_machine_attributes();
+                            });
+                        }
+                    })
                 }
             });
         });

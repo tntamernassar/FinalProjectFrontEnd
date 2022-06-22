@@ -6,4 +6,5 @@ const Links = {
     Aborts: '../Reports/Aborts/Aborts.html',
     Chemicals: '../Reports/Chemicals/chemicals.html',
     PMs: '../Reports/PMs/PMs.html',
+    Notifications : '../Notifications/Notifications.html',
 };

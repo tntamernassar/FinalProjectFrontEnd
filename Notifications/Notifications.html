@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notifications</title>
+
+
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/menu.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/tabs.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/organization_chart.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/checkboxes.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/simple_table.css"/>
+
+
+    <script src="../Network/NetworkAdapter.js"></script>
+    <script src="../Network/MockNetworkAdapter.js"></script>
+    <script src="../Notifications/js/Notifications.js"></script>
+    <script src="../User/UserManager.js"></script>
+    <script src="../Utils/Utils.js"></script>
+    <script src="../Utils/ChartBuilder.js"></script>
+    <script src="../Utils/TableBuilder.js"></script>
+
+
+</head>
+<body>
+
+<div class="header">
+
+    <div class="username_label_holder">
+        <span id="username_label">Tamer Nassar</span>
+    </div>
+    <div class="flatname_label_holder">
+        <span>TGR Control Panel</span>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <div id="inner_container" class="inner_container2 report_card">
+        <div class = "checkboxes_div">
+        <label class="checkbox_container">
+            <input type="checkbox" id="Add User" />
+            <label > Add User</label><br>
+            <span class="checkmark"></span>
+        </label>
+            <label class="checkbox_container">
+                <input type="checkbox" id="Remove User"/>
+                <label > Remove User</label><br>
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkbox_container">
+                <input type="checkbox" id="Add Machines"/>
+                <label > Add Machines</label><br>
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkbox_container">
+                <input type="checkbox" id="Remove Machines"/>
+                <label > Remove Machines</label><br>
+                <span class="checkmark"></span>
+            </label>
+
+        </div>
+        <button type="button" id="button_save" class="button">Save!</button>
+
+    </div>
+</div>
+
+<script>
+    Notifications.init();
+</script>
+
+
+</body>
+</html>

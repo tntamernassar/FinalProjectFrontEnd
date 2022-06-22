@@ -52,7 +52,6 @@ let ControlPanel = {
         } else {
           Utils.redirect("../Login/Login.html")
         }
-
     }
 
 

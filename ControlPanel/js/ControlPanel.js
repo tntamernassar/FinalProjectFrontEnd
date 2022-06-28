@@ -1,5 +1,8 @@
 let ControlPanel = {
 
+
+    PERMISSIONS: [],
+
     create_checklist: (parent, options, oncheck, onsave)=>{
         options.forEach( (option, index) => {
             let container = Utils.make_check_box_container(option);
@@ -39,19 +42,27 @@ let ControlPanel = {
     init: ()=>{
         NetworkAdapter.init(()=>{
             console.log("connected");
+            if (UserManager.logged_in()) {
+                let username = document.getElementById("username_label");
+                NetworkAdapter.send({
+                    "action": "get_user_permissions",
+                    "department": "BGU"
+                }, (response) => {
+                    let user = UserManager.getuser();
+                    let name = user["first_name"] + " " + user["last_name"];
+                    username.innerHTML = name;
+
+                    let user_permissions = response["user_permissions"];
+                    user_permissions = user_permissions.filter(u => u["user_name"] === user["username"]).map(x => x["Permissions_id"]);
+                    ControlPanel.PERMISSIONS = user_permissions;
+                });
+            } else {
+                Utils.redirect("../Login/Login.html")
+            }
         }, (e)=>{
             console.error(e);
         });
-        if (UserManager.logged_in()){
 
-            let username = document.getElementById("username_label");
-
-            let user = UserManager.getuser();
-            let name = user["first_name"] + " " + user["last_name"];
-            username.innerHTML = name;
-        } else {
-          Utils.redirect("../Login/Login.html")
-        }
     }
 
 

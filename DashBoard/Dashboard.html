@@ -52,15 +52,18 @@
     <div class="menu">
         <br/>
         <div class="menu_header">Reports</div>
-        <div onclick="Utils.redirect(Links.Counters)" class="menu_option">Counters</div>
-        <div onclick="Utils.redirect(Links.Chemicals)" class="menu_option">Chemicals</div>
-        <div onclick="Utils.redirect(Links.Aborts)" class="menu_option">Aborts</div>
-        <div onclick="Utils.redirect(Links.PMs)" class="menu_option">PMs</div>
+        <div onclick="Dashboard.OpenCounters()" class="menu_option">Counters</div>
+        <div onclick="Dashboard.OpenChemicals()" class="menu_option">Chemicals</div>
+        <div onclick="Dashboard.OpenAborts()" class="menu_option">Aborts</div>
+        <div onclick="Dashboard.OpenPMs()" class="menu_option">PMs</div>
         <br />
         <br />
         <div class="menu_header">Settings</div>
         <div class="menu_option" onclick="Utils.redirect(Links.ControlPanel)">Control Panel</div>
         <div class="menu_option" onclick="Utils.redirect(Links.Notifications)">Notifications</div>
+        <br />
+        <br />
+        <div class="menu_header" onclick="UserManager.logout(Utils.redirect('../Login/Login.html'))">Log Out</div>
     </div>
 
     <!-- Working Area -->
@@ -84,12 +87,21 @@
 
         </div>
     </div>
+
+
+
 </div>
 
 
 <script type="text/javascript">
      Dashboard.init();
 </script>
+
+
+
+<div class="download_data_div">
+    <img id="download_data_btn" src="../../images/json.png" width="50px" height="50px"/>
+</div>
 
 </body>
 </html>

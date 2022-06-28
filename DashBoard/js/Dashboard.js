@@ -1,4 +1,5 @@
 
+
 let Dashboard = {
 
     display_parent_popup:(parent_entity, children_entities)=>{
@@ -88,12 +89,32 @@ let Dashboard = {
                 "department": "BGU"
             }, (response)=>{
                 console.log(response);
+                let download_data = document.getElementById("download_data_btn");
+                download_data.onclick =() => {
+                    Utils.download_data(response["machines"], "machines");
+                }
                 Dashboard.display_machines(response["machines"]);
             });
         };
 
         NetworkAdapter.init(onConnection, console.error);
-    }
+    },
 
+
+    OpenCounters() {
+        Utils.redirect(Links.Counters)
+    },
+
+    OpenChemicals() {
+        Utils.redirect(Links.Chemicals)
+    },
+
+    OpenAborts() {
+        Utils.redirect(Links.Aborts)
+    },
+
+    OpenPMs() {
+        Utils.redirect(Links.PMs)
+    },
 
 }

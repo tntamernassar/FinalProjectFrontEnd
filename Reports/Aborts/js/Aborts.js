@@ -8,6 +8,7 @@ const E3 = {
         let relevant_data = e3_data.filter((row)=>
             row["CEID"] === ceid && row["STATUS"] === summary_status && Utils.str_date_diff(row["RUN_START_TIME"], new Date()) <= days_back * 24 * 60
         );
+        console.log(ceid , summary_status);
         if (relevant_data.length == 0){
             return;
         }
@@ -200,6 +201,12 @@ const Aborts = {
                 document.getElementById("loading").style.display = "none";
                 Aborts.build_tabs();
                 let tracers = tracers_response["data"];
+
+                let download_data = document.getElementById("download_data_btn");
+                download_data.onclick =() => {
+                    Utils.download_data({e3:e3 ,tracers:tracers }, "Aborts");
+                }
+
                 if (e3_response["success"] && tracers_response["success"]){
                     Aborts.onData(e3, tracers);
                 }else{
@@ -211,5 +218,6 @@ const Aborts = {
 
     init:()=>{
         NetworkAdapter.init(Aborts.request_data, (e)=>Aborts.errors([e]));
+
     }
 };

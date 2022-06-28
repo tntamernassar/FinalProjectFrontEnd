@@ -143,5 +143,17 @@ const Utils = {
         button.className = "button";
 
         return button;
+    },
+
+    download_data: (data,title)=>{
+        function download(content, fileName, contentType) {
+            var a = document.createElement("a");
+            var file = new Blob([content], {type: contentType});
+            a.href = URL.createObjectURL(file);
+            a.download = fileName;
+            a.click();
+        }
+        download(JSON.stringify(data),title+".json","text/plain")
+
     }
 }

@@ -52,6 +52,10 @@ let UsersManagement = {
 
     add_admin: () => {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,1)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -92,6 +96,10 @@ let UsersManagement = {
 
     remove_admin: () => {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,1)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -132,6 +140,10 @@ let UsersManagement = {
 
     add_user: () => {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,4)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         inner_container.className = "report_card login_card";
         let h =document.createElement("H1");
@@ -196,6 +208,10 @@ let UsersManagement = {
 
     remove_user: () => {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,4)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -263,6 +279,7 @@ let UsersManagement = {
                     let permissionsuser = user_permissions_response["user_permissions"];
 
                     let tabs = [];
+
                     users.forEach(user => {
                         let name = user["first_name"] + " " + user["last_name"];
                         let username = user["username"];
@@ -312,6 +329,10 @@ let UsersManagement = {
 
     add_machine_management_permission: () => {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,1)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -336,6 +357,8 @@ let UsersManagement = {
                     let permissionsuser = user_permissions_response["user_permissions"];
 
                     let num_Per_AddMachine=permissions.filter( x => x["Name"]=="Add Machine")[0]["Permissions_id"];
+
+
 
                     let hashMap = UsersManagement.build_hash_map(permissionsuser)
 
@@ -384,6 +407,10 @@ let UsersManagement = {
 
     remove_machine_management_permission :() => {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,1)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -455,6 +482,10 @@ let UsersManagement = {
 
     add_view_report_permission: () => {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,1)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -526,6 +557,10 @@ let UsersManagement = {
 
     remove_view_report_permission: () => {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,1)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -642,6 +677,10 @@ let UsersManagement = {
 
     add_machine() {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,2)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -702,6 +741,10 @@ let UsersManagement = {
     },
     remove_machine() {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,2)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -741,6 +784,10 @@ let UsersManagement = {
     },
     add_machine_attributes() {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,2)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";
@@ -829,6 +876,10 @@ let UsersManagement = {
     },
     remove_machine_attributes() {
         ControlPanel.resent_inner_container();
+        if (!UserManager.have_permission(ControlPanel.PERMISSIONS,2)){
+            alert("you dont have permission")
+            return;
+        }
         let inner_container = document.getElementById("inner_container");
         let checkboxes_div = document.createElement("div");
         checkboxes_div.className = "checkboxes_div";

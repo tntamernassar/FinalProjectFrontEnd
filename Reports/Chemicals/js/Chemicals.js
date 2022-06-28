@@ -222,6 +222,12 @@ let Chemicals = {
                             console.log(chemicals);
                             console.log(tracers);
                             console.log(E3);
+
+                            let download_data = document.getElementById("download_data_btn");
+                            download_data.onclick =() => {
+                                Utils.download_data({E3: E3, chemicals:chemicals , tracers:tracers}, "chemicals");
+                            }
+
                             document.getElementById("loading").style.display = "none";
                             chemicals["data"]["tracers"] = tracers["data"]["tracers"];
                             chemicals["data"]["aborts"] = E3["data"]["e3"];

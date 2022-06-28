@@ -21,6 +21,9 @@ let UserManager = {
 
     getuser:()=>{
         return JSON.parse(localStorage.getItem("user"));
-    }
+    },
 
+    have_permission: (permissions, permission)=>{
+        return permissions.indexOf(permission) >= 0;
+    }
 }

@@ -85,12 +85,20 @@ let Counters = {
     },
 
     init: (config) => {
+
         NetworkAdapter.init(() => {
             NetworkAdapter.send({
                 "action": "get_report",
                 "report": "counters"
             }, (response) => {
                 Counters.draw(config, response["data"]["Counters"]);
+
+
+                let download_data = document.getElementById("download_data_btn");
+                download_data.onclick =() => {
+                    Utils.download_data(response["data"], "Counters");
+                }
+
             });
         }, (e) => Counters.errors([e]));
     }

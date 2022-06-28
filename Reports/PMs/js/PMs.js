@@ -123,6 +123,13 @@ let PMs = {
                 }, (response) => {
                     console.log(response);
                     let data = response["data"];
+
+
+                    let download_data = document.getElementById("download_data_btn");
+                    download_data.onclick =() => {
+                        Utils.download_data(response["data"], "PMs");
+                    }
+
                     PMs.calculate_attributes(data, config);
                     Utils.build_tabs(document.getElementById("pms_navigator"),
                         [
@@ -147,6 +154,8 @@ let PMs = {
 
                 });
             }, PMs.error);
+
+
         });
     }
 };

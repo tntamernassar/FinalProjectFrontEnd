@@ -2,6 +2,8 @@
 
 let Dashboard = {
 
+    PERMISSIONS: [],
+
     display_parent_popup:(parent_entity, children_entities)=>{
         let body = document.createElement("div");
         let simple_table_builder = TableBuilder.simple_table_builder();
@@ -102,19 +104,141 @@ let Dashboard = {
 
 
     OpenCounters() {
-        Utils.redirect(Links.Counters)
+
+        NetworkAdapter.init(()=>{
+            console.log("connected");
+            if (UserManager.logged_in()) {
+                let username = document.getElementById("username_label");
+                NetworkAdapter.send({
+                    "action": "get_user_permissions",
+                    "department": "BGU"
+                }, (response) => {
+                    let user = UserManager.getuser();
+                    let name = user["first_name"] + " " + user["last_name"];
+                    username.innerHTML = name;
+
+                    let user_permissions = response["user_permissions"];
+                    user_permissions = user_permissions.filter(u => u["user_name"] === user["username"]).map(x => x["Permissions_id"]);
+                    Dashboard.PERMISSIONS = user_permissions;
+
+                    if (!UserManager.have_permission(Dashboard.PERMISSIONS,1)){
+                        alert("you dont have permission")
+                        return;
+                    }
+                    Utils.redirect(Links.Counters)
+
+                });
+            } else {
+                Utils.redirect("../Login/Login.html")
+            }
+        }, (e)=>{
+            console.error(e);
+        });
+
+
     },
 
     OpenChemicals() {
-        Utils.redirect(Links.Chemicals)
+        NetworkAdapter.init(() => {
+            console.log("connected");
+            if (UserManager.logged_in()) {
+                let username = document.getElementById("username_label");
+                NetworkAdapter.send({
+                    "action": "get_user_permissions",
+                    "department": "BGU"
+                }, (response) => {
+                    let user = UserManager.getuser();
+                    let name = user["first_name"] + " " + user["last_name"];
+                    username.innerHTML = name;
+
+                    let user_permissions = response["user_permissions"];
+                    user_permissions = user_permissions.filter(u => u["user_name"] === user["username"]).map(x => x["Permissions_id"]);
+                    Dashboard.PERMISSIONS = user_permissions;
+
+                    if (!UserManager.have_permission(Dashboard.PERMISSIONS, 1)) {
+                        alert("you dont have permission")
+                        return;
+                    }
+                    Utils.redirect(Links.Chemicals)
+
+                });
+            } else {
+                Utils.redirect("../Login/Login.html")
+            }
+        }, (e) => {
+            console.error(e);
+        });
+
     },
 
     OpenAborts() {
-        Utils.redirect(Links.Aborts)
+        NetworkAdapter.init(() => {
+            console.log("connected");
+            if (UserManager.logged_in()) {
+                let username = document.getElementById("username_label");
+                NetworkAdapter.send({
+                    "action": "get_user_permissions",
+                    "department": "BGU"
+                }, (response) => {
+                    let user = UserManager.getuser();
+                    let name = user["first_name"] + " " + user["last_name"];
+                    username.innerHTML = name;
+
+                    let user_permissions = response["user_permissions"];
+                    user_permissions = user_permissions.filter(u => u["user_name"] === user["username"]).map(x => x["Permissions_id"]);
+                    Dashboard.PERMISSIONS = user_permissions;
+
+                    if (!UserManager.have_permission(Dashboard.PERMISSIONS, 1)) {
+                        alert("you dont have permission")
+                        return;
+                    }
+                    Utils.redirect(Links.Aborts)
+
+                });
+            } else {
+                Utils.redirect("../Login/Login.html")
+            }
+        }, (e) => {
+            console.error(e);
+        });
+
+
+
     },
 
     OpenPMs() {
-        Utils.redirect(Links.PMs)
+        NetworkAdapter.init(() => {
+            console.log("connected");
+            if (UserManager.logged_in()) {
+                let username = document.getElementById("username_label");
+                NetworkAdapter.send({
+                    "action": "get_user_permissions",
+                    "department": "BGU"
+                }, (response) => {
+                    let user = UserManager.getuser();
+                    let name = user["first_name"] + " " + user["last_name"];
+                    username.innerHTML = name;
+
+                    let user_permissions = response["user_permissions"];
+                    user_permissions = user_permissions.filter(u => u["user_name"] === user["username"]).map(x => x["Permissions_id"]);
+                    Dashboard.PERMISSIONS = user_permissions;
+
+                    if (!UserManager.have_permission(Dashboard.PERMISSIONS, 1)) {
+                        alert("you dont have permission")
+                        return;
+                    }
+                    Utils.redirect(Links.PMs)
+
+                });
+            } else {
+                Utils.redirect("../Login/Login.html")
+            }
+        }, (e) => {
+            console.error(e);
+        });
+
+
+
     },
 
 }
